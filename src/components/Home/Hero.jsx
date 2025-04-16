@@ -1,128 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import img1 from "../../asset/image.webp"
 
 const Hero = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const navigate = useNavigate();
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-    const slides = [
+    const images = [
         {
-            id: 1,
-            title: "Surya Kiran Bungalows",
-            description: "Luxury living spaces designed with modern aesthetics and functional comfort. Our residential projects blend innovation with timeless design principles.",
-            image: "https://img.freepik.com/free-photo/beautiful-city_1127-3353.jpg?t=st=1744344644~exp=1744348244~hmac=77f8f55e5675d5c4fc5e572e574308cee9dfca6adcf59f9e508c58f02a791361&w=996",
-            path: "/surya-kiran-bungalows"
+            src: img1,
+            alt: "Malbar Prime Building",
+            title: "MALBAR PRIME",
+            description: "A modern shopping destination with premium brands and amenities.",
         },
         {
-            id: 2,
-            title: "Malbar Gold",
-            description: "Contemporary urban residences that maximize space and natural light, perfect for city dwellers seeking comfort and style.",
-            image: "https://img.freepik.com/free-photo/beautiful-city_1127-3353.jpg?t=st=1744344644~exp=1744348244~hmac=77f8f55e5675d5c4fc5e572e574308cee9dfca6adcf59f9e508c58f02a791361&w=996",
-            path: "/malbar-gold"
+            src: img1,
+            alt: "Malbar Prime Interior",
+            title: "MALBAR PRIME",
+            description: "Explore our spacious interior with a variety of shopping options.",
         },
         {
-            id: 3,
-            title: "Malbar Hills",
-            description: "Spacious and elegant suburban properties that combine privacy with community living, featuring sustainable design elements.",
-            image: "https://img.freepik.com/free-photo/beautiful-city_1127-3353.jpg?t=st=1744344644~exp=1744348244~hmac=77f8f55e5675d5c4fc5e572e574308cee9dfca6adcf59f9e508c58f02a791361&w=996",
-            path: "/malbar-hills"
+            src: img1,
+            alt: "Malbar Prime Cafe",
+            title: "MALBAR PRIME",
+            description: "Enjoy our rooftop cafe with panoramic views of the city.",
         },
-        {
-            id: 4,
-            title: "Malbar Royal",
-            description: "Spacious and elegant suburban properties that combine privacy with community living, featuring sustainable design elements.",
-            image: "https://img.freepik.com/free-photo/beautiful-city_1127-3353.jpg?t=st=1744344644~exp=1744348244~hmac=77f8f55e5675d5c4fc5e572e574308cee9dfca6adcf59f9e508c58f02a791361&w=996",
-            path: "/Malbar-royal"
-        },
-        {
-            id: 5,
-            title: "Malbar Prime",
-            description: "Spacious and elegant suburban properties that combine privacy with community living, featuring sustainable design elements.",
-            image: "https://img.freepik.com/free-photo/beautiful-city_1127-3353.jpg?t=st=1744344644~exp=1744348244~hmac=77f8f55e5675d5c4fc5e572e574308cee9dfca6adcf59f9e508c58f02a791361&w=996",
-            path: "/Malbar-Prime"
-        }
     ];
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-        }, 5000);
-        return () => clearInterval(interval);
-    }, [slides.length]);
-
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    const goToNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     };
 
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+    const goToPrevious = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
     };
 
     const goToSlide = (index) => {
-        setCurrentSlide(index);
+        setCurrentIndex(index);
     };
 
-    const handleExploreMore = (path) => {
-        navigate(path);
-    };
+    useEffect(() => {
+        let interval;
+
+        if (isAutoPlaying) {
+            interval = setInterval(() => {
+                goToNext();
+            }, 5000);
+        }
+
+        return () => {
+            if (interval) {
+                clearInterval(interval);
+            }
+        };
+    }, [isAutoPlaying, currentIndex]);
 
     return (
-        <div className="relative h-screen w-full overflow-hidden">
-            <div className="relative h-full w-full">
-                {slides.map((slide, index) => (
+        <div className="relative w-full h-full overflow-hidden rounded-lg">
+            <div className="relative h-[800px] w-full">
+                {images.map((image, index) => (
                     <div
-                        key={slide.id}
-                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+                        key={index}
+                        className={`absolute top-3 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                            }`}
                     >
-                        <div className="relative h-full w-full">
-                            <img
-                                src={slide.image}
-                                alt={slide.title}
-                                className="w-full h-full object-cover whitespace-nowrap"
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                        <img
+                            src={image.src || "/placeholder.svg"}
+                            alt={image.alt}
+                            className="object-cover w-full h-full"
+                        />
+
+                        <div className="absolute bottom-0 right-0 p-6 text-left bg-white bg-opacity-110 max-w-[500px] rounded-2xl h-[14rem]">
+                            <h2 className="text-5xl font-bold text-black mb-4 mt-16">{image.title}</h2>
+                            <button
+                                className="bg-[#ff6e00] text-white px-6 py-3 rounded font-medium border-none cursor-pointer transition-colors duration-300 hover:bg-[#e06200]"
+                            >
+                                Explore more
+                            </button>
                         </div>
 
-                        <div className="absolute inset-0 flex flex-col justify-center px-8 md:px-16 lg:px-24">
-                            <div className="max-w-2xl">
-                                <h1 className="whitespace-nowrap text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                                    {slide.title}
-                                </h1>
-                                <p className="text-lg md:text-xl text-white mb-8">{slide.description}</p>
-                                <button
-                                    onClick={() => handleExploreMore(slide.path)}
-                                    className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-6 rounded transition-colors duration-300"
-                                >
-                                    Explore more
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 ))}
-            </div>
 
-            <button
-                onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 bg-black bg-opacity-30 hover:bg-opacity-50 text-white p-2 rounded-full"
-            >
-                <ChevronLeft size={24} />
-            </button>
-            <button
-                onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 bg-black bg-opacity-30 hover:bg-opacity-50 text-white p-2 rounded-full"
-            >
-                <ChevronRight size={24} />
-            </button>
+                <button
+                    onClick={goToPrevious}
+                    className="absolute top-1/2 left-4 -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
+                    aria-label="Previous slide"
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
 
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex space-x-2">
-                {slides.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === currentSlide ? 'bg-orange-500' : 'bg-white bg-opacity-50 hover:bg-opacity-75'}`}
-                    ></button>
-                ))}
+                <button
+                    onClick={goToNext}
+                    className="absolute top-1/2 right-4 -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
+                    aria-label="Next slide"
+                >
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                    >
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {images.map((_, index) => (
+                        <button
+                            key={index}
+                            onClick={() => goToSlide(index)}
+                            className={`w-3 h-3 rounded-full border-none cursor-pointer transition-colors duration-300 ${index === currentIndex
+                                ? "bg-[#ff6e00]"
+                                : "bg-white bg-opacity-60 hover:bg-opacity-100"
+                                }`}
+                            aria-label={`Go to slide ${index + 1}`}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

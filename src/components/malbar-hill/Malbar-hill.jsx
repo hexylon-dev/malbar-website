@@ -3,8 +3,47 @@ import { Link } from 'react-router-dom';
 import ContactForm from '../Shared/form';
 import ImageSlider from '../Shared/image-slider';
 import TestimonialSlider from '../Shared/testimonials';
+import imgcoursel from '../../asset/Hills-coursel.png'
+import img1 from "../../asset/Hills-1.webp"
+import img2 from "../../asset/Hills-2.webp"
+import img3 from "../../asset/Hills-3.webp"
+import img4 from "../../asset/Hills-4.webp"
+import img5 from "../../asset/Hills-5.webp"
+import Projectcard from '../Home/ProjectCard';
 
 const Malbarhills = () => {
+    const images = [
+        {
+            id: 1,
+            src: imgcoursel,
+            alt: "Luxury villa with Mediterranean architecture featuring white facade and ornate balconies"
+        },
+        {
+            id: 2,
+            src: img1,
+            alt: "Night view of residential villas with lights"
+        },
+        {
+            id: 3,
+            src: img2,
+            alt: "Row of upscale residential townhouses"
+        },
+        {
+            id: 4,
+            src: img3,
+            alt: "Side view of residential development"
+        },
+        {
+            id: 5,
+            src: img4,
+            alt: "Front entrance detail of Mediterranean style home"
+        },
+        {
+            id: 6,
+            src: img5,
+            alt: "Front entrance detail of Mediterranean style home"
+        }
+    ];
     return (
         <div className="min-h-screen pt-16 sm:pt-20">
             <div className="container mx-auto px-4 py-4 sm:py-8">
@@ -29,13 +68,13 @@ const Malbarhills = () => {
 
                 {/* Image slider */}
                 <div className="mb-8 sm:mb-12">
-                    <ImageSlider />
+                    <ImageSlider images={images} />
                 </div>
 
                 {/* Testimonials slider */}
                 <div className="mt-12 sm:mt-20">
                     <h2 className="text-2xl sm:text-3xl font-semibold text-center text-orange-500">What Our Clients Say</h2>
-                    <TestimonialSlider />
+                    <Projectcard />
                 </div>
 
                 {/* Contact form */}

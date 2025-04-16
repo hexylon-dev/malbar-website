@@ -15,7 +15,8 @@ import MalbarGold from './components/malbar-gold/Malbar-gold.jsx';
 import Contact from './components/Home/Contact';
 import Savitamalbar from './components/malbar-royal/Malbar-royal.jsx';
 import Malbarhills from './components/malbar-hill/Malbar-hill.jsx';
-import Dhananimalbar from './components/dhananimalbar/Dhananimalbar';
+import Malbarprime from './components/malbar-prime/Malbar-prime.jsx';
+import PetrolPumpUI from "./components/Service/petrolpump/Petrolpump.jsx"
 
 // import Contact from './components/contact/Contact';
 
@@ -36,8 +37,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/malbar-royal" element={<Savitamalbar />} />
           <Route path="/Malbar-hills" element={<Malbarhills />} />
-          <Route path="/Malbar-Prime" element={<Dhananimalbar />} />
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/Malbar-Prime" element={<Malbarprime />} />
+          <Route path="/petrolpump" element={<PetrolPumpUI />} />
         </Routes>
         <Footer />
       </div>

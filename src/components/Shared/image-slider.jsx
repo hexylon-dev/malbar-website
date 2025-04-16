@@ -1,34 +1,8 @@
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-export default function ImageSlider() {
-    const images = [
-        {
-            id: 1,
-            src: "https://plus.unsplash.com/premium_photo-1661964095477-fe68b487f700?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVpbGRpbmclMjBpbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
-            alt: "Luxury villa with Mediterranean architecture featuring white facade and ornate balconies"
-        },
-        {
-            id: 2,
-            src: "https://plus.unsplash.com/premium_photo-1661964095477-fe68b487f700?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVpbGRpbmclMjBpbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
-            alt: "Night view of residential villas with lights"
-        },
-        {
-            id: 3,
-            src: "https://plus.unsplash.com/premium_photo-1661964095477-fe68b487f700?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVpbGRpbmclMjBpbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
-            alt: "Row of upscale residential townhouses"
-        },
-        {
-            id: 4,
-            src: "https://plus.unsplash.com/premium_photo-1661964095477-fe68b487f700?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVpbGRpbmclMjBpbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
-            alt: "Side view of residential development"
-        },
-        {
-            id: 5,
-            src: "https://plus.unsplash.com/premium_photo-1661964095477-fe68b487f700?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnVpbGRpbmclMjBpbiUyMGJhY2tncm91bmR8ZW58MHx8MHx8fDA%3D",
-            alt: "Front entrance detail of Mediterranean style home"
-        }
-    ];
+export default function ImageSlider({ images }) {
+
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
@@ -78,7 +52,7 @@ export default function ImageSlider() {
     return (
         <div className="flex flex-col  h-[80vh]">
             {/* Main Slider - 90vh height view */}
-            <div className="relative overflow-hidden flex-grow bg-gray-900 h-[90vh]">
+            <div className="relative overflow-hidden flex-grow  h-full">
                 {/* Main Image - Fixed the height-[90vh] to h-[90vh] */}
                 <div className="relative w-full h-[90vh]">
                     {images.map((image, index) => (
@@ -94,7 +68,7 @@ export default function ImageSlider() {
                             <img
                                 src={image.src}
                                 alt={image.alt}
-                                className="object-cover w-full h-[80vh]"
+                                className="object-contain w-full h-full"
                             />
 
                             {/* Caption */}
@@ -139,7 +113,7 @@ export default function ImageSlider() {
             </div>
 
             {/* Centered Thumbnails - Fixed at bottom */}
-            <div className="flex justify-center bg-gray-100 py-2 px-4 shadow-inner">
+            <div className="flex justify-center  py-2 px-4 shadow-inner">
                 <div className="flex space-x-4 overflow-x-auto max-w-4xl">
                     {images.map((image, index) => (
                         <button

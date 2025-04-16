@@ -26,6 +26,17 @@ export default function ResidentialArea() {
             name: "Building Name",
             description: "Address of the land and availability",
             image: "/api/placeholder/400/300"
+        },
+        {
+            id: 5,
+            name: "Building Name",
+            description: "Address of the land and availability",
+            image: "https://as2.ftcdn.net/v2/jpg/04/59/24/03/1000_F_459240366_09oUgYcL5j2T4A7sMZfOtCBis9y4D9IK.jpg"
+        }, {
+            id: 6,
+            name: "Coming soon",
+            // description: "Address of the land and availability",
+            image: "https://as2.ftcdn.net/v2/jpg/04/59/24/03/1000_F_459240366_09oUgYcL5j2T4A7sMZfOtCBis9y4D9IK.jpg"
         }
     ];
 

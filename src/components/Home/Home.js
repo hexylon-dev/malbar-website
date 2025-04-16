@@ -12,9 +12,6 @@ const Home = () => {
             <section className="w-full">
                 <Hero />
             </section>
-            <section className="w-full">
-                <ProjectCard />
-            </section>
 
             {/* About Section */}
             <section className="w-full py-16 bg-gray-50">
@@ -25,6 +22,11 @@ const Home = () => {
             <section className="w-full py-16">
                 <Gallery />
             </section>
+
+            <section className="w-full">
+                <ProjectCard />
+            </section>
+
 
             {/* Contact Section */}
             <section className="w-full py-16 bg-gray-50">
