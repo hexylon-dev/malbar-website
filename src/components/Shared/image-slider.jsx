@@ -54,7 +54,7 @@ export default function ImageSlider({ images }) {
             {/* Main Slider - 90vh height view */}
             <div className="relative overflow-hidden flex-grow  h-full">
                 {/* Main Image - Fixed the height-[90vh] to h-[90vh] */}
-                <div className="relative w-full h-[90vh]">
+                <div className="relative w-full h-[90   vh]">
                     {images.map((image, index) => (
                         <div
                             key={image.id}
@@ -68,7 +68,7 @@ export default function ImageSlider({ images }) {
                             <img
                                 src={image.src}
                                 alt={image.alt}
-                                className="object-contain w-full h-full"
+                                className="object-cover w-full h-full"
                             />
 
                             {/* Caption */}

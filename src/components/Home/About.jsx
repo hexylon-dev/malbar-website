@@ -16,36 +16,62 @@ export default function About() {
         }
     }, [isInView, controls])
 
-    // Static grid of small squares (no animation)
+    // Create horizontal lines (rows)
     const rows = 20;
-    const cols = 30;
-    const squares = [];
-
+    const rowLines = [];
     for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-            squares.push(
-                <div
-                    key={`${row}-${col}`}
-                    className="absolute bg-orange-400 rounded-sm opacity-5 hover:opacity-20 transition duration-100"
-                    style={{
-                        width: `${100 / cols}%`,
-                        height: `${100 / rows}%`,
-                        top: `${row * (100 / rows)}%`,
-                        left: `${col * (100 / cols)}%`,
-                        zIndex: 0,
-                    }}
-                />
-            )
-        }
+        rowLines.push(
+            <div
+                key={`row-${row}`}
+                className="absolute bg-orange-500 opacity-20"
+                style={{
+                    width: "100%",
+                    height: "1px",
+                    top: `${row * (100 / rows)}%`,
+                    left: "0",
+                }}
+            />
+        )
+    }
+
+    // Create vertical lines (columns)
+    const cols = 30;
+    const colLines = [];
+    for (let col = 0; col < cols; col++) {
+        colLines.push(
+            <div
+                key={`col-${col}`}
+                className="absolute bg-orange-500 opacity-20"
+                style={{
+                    width: "1px",
+                    height: "100%",
+                    left: `${col * (100 / cols)}%`,
+                    top: "0",
+                }}
+            />
+        )
     }
 
     return (
         <div className="w-full min-h-screen flex items-center relative overflow-hidden">
-            {/* Static Grid Background */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none">
-                {squares}
-            </div>
+            {/* Rotated Square Background (4-degree angle) */}
+            <motion.div
+                className="absolute inset-0 w-full h-full bg-white"
+                style={{
+                    rotate: "4deg",
+                    scale: 1.1,
+                    originX: 0.5,
+                    originY: 0.5
+                }}
+            >
+                {/* Grid Lines */}
+                <div className="absolute inset-0 w-full h-full pointer-events-none">
+                    {rowLines}
+                    {colLines}
+                </div>
+            </motion.div>
 
+            {/* Content (Unrotated) */}
             <div className="max-w-6xl mx-auto p-8 py-16 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -61,7 +87,7 @@ export default function About() {
                 </motion.div>
 
                 <div className="flex flex-col md:flex-row gap-12">
-                    {/* Image Container */}
+                    {/* Image Container - Updated with responsive sizing */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -72,17 +98,18 @@ export default function About() {
                             damping: 15,
                             stiffness: 100
                         }}
-                        className="w-full md:w-2/5"
+                        className="w-full md:w-2/5 flex items-center justify-center"
                     >
                         <motion.div
                             whileHover={{ y: -10 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="rounded-lg overflow-hidden shadow-lg bg-white"
+                            className="rounded-lg overflow-hidden shadow-lg bg-white w-full h-auto
+                                       max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
                         >
                             <img
                                 src={img1 || "/placeholder.svg"}
                                 alt="Profile"
-                                className="w-full h-auto object-cover"
+                                className="w-full h-full object-cover"
                             />
                         </motion.div>
                     </motion.div>
@@ -100,7 +127,7 @@ export default function About() {
                             stiffness: 100,
                             delay: 0.2
                         }}
-                        className="w-full md:w-3/5 bg-white/90 p-6 rounded-lg backdrop-blur-sm"
+                        className="w-full md:w-3/5 p-6 rounded-lg"
                     >
                         <h2 className="text-3xl font-bold mb-6">Nrupansh Dalwadi</h2>
 

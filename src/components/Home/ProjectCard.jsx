@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// img
+import img1 from "../../asset/cartoon.png"
 
 const Projectcard = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -10,35 +10,35 @@ const Projectcard = () => {
             id: 1,
             name: "Parth",
             title: "Lead designer",
-            image: "/api/placeholder/80/80",
+            image: img1,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
         },
         {
             id: 2,
             name: "Parth",
             title: "Lead designer",
-            image: "/api/placeholder/80/80",
+            image: img1,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesque enim"
         },
         {
             id: 3,
             name: "Parth",
             title: "Lead designer",
-            image: "/api/placeholder/80/80",
+            image: img1,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
         },
         {
             id: 4,
             name: "Parth",
             title: "Lead designer",
-            image: "/api/placeholder/80/80",
+            image: img1,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
         },
         {
             id: 5,
             name: "Parth",
             title: "Lead designer",
-            image: "/api/placeholder/80/80",
+            image: img1,
             text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
         }
     ];

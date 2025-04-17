@@ -8,7 +8,7 @@ import img2 from "../../asset/image.webp"
 const Gallery = ({ end, title, delay = 0 }) => {
     const controls = useAnimation()
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, amount: 0.5 })
+    const isInView = useInView(ref, { once: true, amount: 0.3 }) // Reduced threshold for smoother trigger
     const [count, setCount] = useState(0)
 
     useEffect(() => {
@@ -21,7 +21,9 @@ const Gallery = ({ end, title, delay = 0 }) => {
             const animate = (timestamp) => {
                 if (!startTime) startTime = timestamp
                 const progress = Math.min((timestamp - startTime) / 2000, 1)
-                setCount(Math.floor(progress * end))
+                // Smooth easing function for the counter
+                const easedProgress = 1 - Math.pow(1 - progress, 3)
+                setCount(Math.floor(easedProgress * end))
 
                 if (progress < 1) {
                     animationFrame = requestAnimationFrame(animate)
@@ -46,7 +48,15 @@ const Gallery = ({ end, title, delay = 0 }) => {
                 animate={controls}
                 variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: delay / 1000 } },
+                    visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                            duration: 0.8,
+                            delay: delay / 1000,
+                            ease: [0.16, 0.77, 0.47, 0.97] // Custom easing
+                        }
+                    },
                 }}
                 className="text-lg font-medium text-gray-800 mb-2"
             >
@@ -57,7 +67,17 @@ const Gallery = ({ end, title, delay = 0 }) => {
                 animate={controls}
                 variants={{
                     hidden: { opacity: 0, scale: 0.8 },
-                    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, delay: (delay + 200) / 1000 } },
+                    visible: {
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                            duration: 0.8,
+                            delay: (delay + 200) / 1000,
+                            type: "spring",
+                            stiffness: 100,
+                            damping: 10
+                        }
+                    },
                 }}
                 className="text-6xl font-bold"
             >
@@ -70,7 +90,7 @@ const Gallery = ({ end, title, delay = 0 }) => {
 export default function WhyChooseUs() {
     const controls = useAnimation()
     const ref = useRef(null)
-    const isInView = useInView(ref, { once: true, amount: 0.3 })
+    const isInView = useInView(ref, { once: true, amount: 0.2 }) // Lower threshold for earlier trigger
 
     useEffect(() => {
         if (isInView) {
@@ -85,7 +105,14 @@ export default function WhyChooseUs() {
                 animate={controls}
                 variants={{
                     hidden: { opacity: 0, y: 20 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+                    visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                            duration: 0.8,
+                            ease: [0.16, 0.77, 0.47, 0.97]
+                        }
+                    },
                 }}
                 className="text-center mb-2"
             >
@@ -97,7 +124,15 @@ export default function WhyChooseUs() {
                 animate={controls}
                 variants={{
                     hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.2 } },
+                    visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                            duration: 0.9,
+                            delay: 0.2,
+                            ease: [0.16, 0.77, 0.47, 0.97]
+                        }
+                    },
                 }}
                 className="text-center mb-6"
             >
@@ -120,10 +155,12 @@ export default function WhyChooseUs() {
                                 scale: 1,
                                 x: 0,
                                 transition: {
-                                    duration: 0.8,
+                                    duration: 1,
                                     delay: 0.4,
                                     type: "spring",
-                                    stiffness: 100,
+                                    stiffness: 80,
+                                    damping: 10,
+                                    ease: [0.16, 0.77, 0.47, 0.97]
                                 },
                             },
                         }}
@@ -146,10 +183,12 @@ export default function WhyChooseUs() {
                                 x: 40,
                                 y: -30,
                                 transition: {
-                                    duration: 0.8,
+                                    duration: 1,
                                     delay: 0.7,
                                     type: "spring",
-                                    stiffness: 100,
+                                    stiffness: 80,
+                                    damping: 10,
+                                    ease: [0.16, 0.77, 0.47, 0.97]
                                 },
                             },
                         }}

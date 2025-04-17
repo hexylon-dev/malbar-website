@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../asset/PRIME.png';
+import logo from '../asset/Group 1000001769 1.png';
 
 export default function Footer() {
     return (
@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="md:w-1/3 mb-8 md:mb-0">
                         <div className="flex items-center mb-4">
 
-                            <img src={img} alt="logo" className="w-18 h-5" />
+                            <img src={logo} alt="logo" className="w-12 h-15" />
                         </div>
                         <p className="text-sm text-gray-600">
                             OurStudio is a digital agency UI / UX Design and Website Development located in Ohio, United States of America
@@ -24,19 +24,19 @@ export default function Footer() {
                         <div className="mb-8 md:mb-0">
                             <h3 className="text-orange-500 font-medium mb-4">Service</h3>
                             <ul className="space-y-2">
-                                <li className="text-sm text-gray-600">Illustration</li>
-                                <li className="text-sm text-gray-600">Mobile Design</li>
-                                <li className="text-sm text-gray-600">Motion Graphic</li>
+                                <li className="text-sm text-gray-600">Petrolium</li>
+                                <li className="text-sm text-gray-600">Bricks</li>
+                                <li className="text-sm text-gray-600">Service</li>
                             </ul>
                         </div>
 
                         {/* Company Links */}
                         <div>
-                            <h3 className="text-orange-500 font-medium mb-4">Company</h3>
+                            <h3 className="text-orange-500 font-medium mb-4">Projects</h3>
                             <ul className="space-y-2">
-                                <li className="text-sm text-gray-600">Service</li>
-                                <li className="text-sm text-gray-600">Features</li>
-                                <li className="text-sm text-gray-600">Our Team</li>
+                                <li className="text-sm text-gray-600">Residential</li>
+                                <li className="text-sm text-gray-600">Commercial</li>
+                                <li className="text-sm text-gray-600">On Going</li>
                             </ul>
                         </div>
                     </div>

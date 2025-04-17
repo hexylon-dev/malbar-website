@@ -1,14 +1,65 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import ContactForm from '../Shared/form';
 import ImageSlider from '../Shared/image-slider';
 import TestimonialSlider from '../Shared/testimonials';
-import imgcoursel from "../../asset/prime-1.webp"
-import img1 from "../../asset/prime-1.webp"
-import img2 from "../../asset/prime-2.png"
-import img3 from "../../asset/prime-3.webp"
-import img4 from "../../asset/prime-4.webp"
-import img5 from "../../asset/prime-5.webp"
+import imgcoursel from "../../asset/prime-1.webp";
+import img1 from "../../asset/prime-1.webp";
+import img2 from "../../asset/prime-2.png";
+import img3 from "../../asset/prime-3.webp";
+import img4 from "../../asset/prime-4.webp";
+import img5 from "../../asset/prime-5.webp";
+
+// Animation variants
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+            when: "beforeChildren"
+        }
+    }
+};
+
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+        }
+    }
+};
+
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.8 }
+    }
+};
+
+const slideInFromLeft = {
+    hidden: { x: -50, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.6 }
+    }
+};
+
+const slideInFromRight = {
+    hidden: { x: 50, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.6 }
+    }
+};
 
 const Malbarprime = () => {
     const clients = [
@@ -19,6 +70,7 @@ const Malbarprime = () => {
         { name: 'TANISHQ', logo: '/logos/tanishq.png' },
         { name: 'TANISHQ', logo: '/logos/tanishq.png' },
     ];
+
     const images = [
         {
             id: 1,
@@ -55,59 +107,120 @@ const Malbarprime = () => {
     return (
         <div className="min-h-screen pt-20">
             <div className="container mx-auto px-4 py-8">
-                {/* <h1 className="text-4xl font-bold text-orange-500 mb-8">Dhananimalbar</h1> */}
-
                 {/* Surya Kiran Bungalows Section */}
-                <div className="mb-16 lg:px-32">
-                    <h2 className="text-3xl font-bold mb-4 ml-12">Malbar Prime</h2>
-                    <p className="text-gray-700 mb-2 ml-12">
+                <motion.div
+                    className="mb-16 lg:px-32"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={containerVariants}
+                >
+                    <motion.h2
+                        className="text-3xl font-bold mb-4 ml-12"
+                        variants={slideInFromLeft}
+                    >
+                        Malbar Prime
+                    </motion.h2>
+                    <motion.p
+                        className="text-gray-700 mb-2 ml-12"
+                        variants={itemVariants}
+                    >
                         <strong>Address :</strong>  Nr. Saurashtra Patel Seva Samaj, Nikol, North East, Ahmedabad
-                    </p>
-                    <p className="text-gray-700 mb-4 ml-12">
+                    </motion.p>
+                    <motion.p
+                        className="text-gray-700 mb-4 ml-12"
+                        variants={itemVariants}
+                    >
                         Malabar Hills is the up and coming project in Nikol, Ahmedabad. Due to its prime location in the heart of the city, the project presents an unprecedented opportunity to become a proud owner of property in this eminent location in the city.
-                    </p>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12">
+                    </motion.p>
+                    <motion.button
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12"
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Enquire Now
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
 
                 {/* Image slider */}
-                <div className="mb-12">
+                <motion.div
+                    className="mb-12"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
                     <ImageSlider images={images} />
-                </div>
+                </motion.div>
 
                 {/* Our Clients Section */}
-                <div className="text-center my-20">
-                    <h2 className="text-3xl font-bold mb-2">Our clients</h2>
-                    <p className="text-gray-500 mb-8">
+                <motion.div
+                    className="text-center my-20"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={containerVariants}
+                >
+                    <motion.h2
+                        className="text-3xl font-bold mb-2"
+                        variants={slideInFromRight}
+                    >
+                        Our clients
+                    </motion.h2>
+                    <motion.p
+                        className="text-gray-500 mb-8"
+                        variants={itemVariants}
+                    >
                         The buyers of the shops from our commercial areas
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-6">
+                    </motion.p>
+                    <motion.div
+                        className="flex flex-wrap justify-center gap-6"
+                        variants={containerVariants}
+                    >
                         {clients.map((client, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className="bg-gray-100 rounded-xl shadow-md p-6 w-24 h-24 flex items-center justify-center"
+                                variants={itemVariants}
+                                whileHover={{ scale: 1.1, boxShadow: "0px 5px 15px rgba(0,0,0,0.1)" }}
                             >
                                 <img
                                     src={client.logo}
                                     alt={client.name}
                                     className="h-10 object-contain"
                                 />
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
 
                 {/* Testimonials */}
-                <div className="mt-20">
-                    <h2 className="text-3xl font-semibold text-center text-orange-500">What Our Clients Say</h2>
+                <motion.div
+                    className="mt-20"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
+                    <motion.h2
+                        className="text-3xl font-semibold text-center text-orange-500"
+                        variants={itemVariants}
+                    >
+                        What Our Clients Say
+                    </motion.h2>
                     <TestimonialSlider />
-                </div>
+                </motion.div>
 
                 {/* Contact form */}
-                <div>
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
                     <ContactForm />
-                </div>
+                </motion.div>
             </div>
         </div>
     );

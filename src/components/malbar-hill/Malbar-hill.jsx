@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import ContactForm from '../Shared/form';
 import ImageSlider from '../Shared/image-slider';
 import TestimonialSlider from '../Shared/testimonials';
-import imgcoursel from '../../asset/Hills-coursel.png'
-import img1 from "../../asset/Hills-1.webp"
-import img2 from "../../asset/Hills-2.webp"
-import img3 from "../../asset/Hills-3.webp"
-import img4 from "../../asset/Hills-4.webp"
-import img5 from "../../asset/Hills-5.webp"
+import imgcoursel from '../../asset/Hills-coursel.png';
+import img1 from "../../asset/Hills-1.webp";
+import img2 from "../../asset/Hills-2.webp";
+import img3 from "../../asset/Hills-3.webp";
+import img4 from "../../asset/Hills-4.webp";
+import img5 from "../../asset/Hills-5.webp";
 import Projectcard from '../Home/ProjectCard';
 
 const Malbarhills = () => {
@@ -44,43 +46,146 @@ const Malbarhills = () => {
             alt: "Front entrance detail of Mediterranean style home"
         }
     ];
-    return (
-        <div className="min-h-screen pt-16 sm:pt-20">
-            <div className="container mx-auto px-4 py-4 sm:py-8">
-                {/* <h1 className="text-4xl font-bold text-orange-500 mb-8">Malbar Hills</h1> */}
-                <div className="mb-8 sm:mb-16 lg:px-32">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-4 mx-2 sm:ml-14">Malabar Hills</h2>
 
-                    {/* Wrapped the paragraphs in a responsive padded div */}
+    // Animation controls for different sections
+    const headerControls = useAnimation();
+    const imageControls = useAnimation();
+    const testimonialControls = useAnimation();
+    const contactControls = useAnimation();
+
+    // Intersection observers for different sections
+    const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
+    const [imageRef, imageInView] = useInView({ threshold: 0.2, triggerOnce: true });
+    const [testimonialRef, testimonialInView] = useInView({ threshold: 0.2, triggerOnce: true });
+    const [contactRef, contactInView] = useInView({ threshold: 0.2, triggerOnce: true });
+
+    // Trigger animations when sections come into view
+    useEffect(() => {
+        if (headerInView) {
+            headerControls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+            });
+        }
+    }, [headerInView, headerControls]);
+
+    useEffect(() => {
+        if (imageInView) {
+            imageControls.start({
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.7, ease: "easeOut" }
+            });
+        }
+    }, [imageInView, imageControls]);
+
+    useEffect(() => {
+        if (testimonialInView) {
+            testimonialControls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+            });
+        }
+    }, [testimonialInView, testimonialControls]);
+
+    useEffect(() => {
+        if (contactInView) {
+            contactControls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+            });
+        }
+    }, [contactInView, contactControls]);
+
+    return (
+        <div className="min-h-screen pt-16 sm:pt-20 overflow-hidden">
+            <div className="container mx-auto px-4 py-4 sm:py-8">
+                {/* Header Section with Animation */}
+                <motion.div
+                    ref={headerRef}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={headerControls}
+                    className="mb-8 sm:mb-16 lg:px-32"
+                >
+                    <motion.h2
+                        className="text-2xl sm:text-3xl font-bold mb-4 mx-2 sm:ml-14"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                    >
+                        Malabar Hills
+                    </motion.h2>
+
                     <div className="px-2 sm:px-0">
-                        <p className="text-gray-700 mb-2 sm:ml-14">
+                        <motion.p
+                            className="text-gray-700 mb-2 sm:ml-14"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                        >
                             <strong>Address :</strong> Opposite Shahi Kutir, MG Road, Nikol, North East, Ahmedabad
-                        </p>
-                        <p className="text-gray-700 mb-4 sm:ml-14">
+                        </motion.p>
+                        <motion.p
+                            className="text-gray-700 mb-4 sm:ml-14"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.6, duration: 0.6 }}
+                        >
                             Malabar Hills is the up and coming project in Nikol, Ahmedabad. Due to its prime location in the heart of the city, the project presents an unprecedented opportunity to become a proud owner of property in this eminent location in the city.
-                        </p>
+                        </motion.p>
                     </div>
 
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded mx-2 sm:ml-14">
+                    <motion.button
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded mx-2 sm:ml-14"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 0.6 }}
+                    >
                         Enquire Now
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
 
-                {/* Image slider */}
-                <div className="mb-8 sm:mb-12">
+                {/* Image slider with animation */}
+                <motion.div
+                    ref={imageRef}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={imageControls}
+                    className="mb-8 sm:mb-12"
+                >
                     <ImageSlider images={images} />
-                </div>
+                </motion.div>
 
-                {/* Testimonials slider */}
-                <div className="mt-12 sm:mt-20">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-center text-orange-500">What Our Clients Say</h2>
+                {/* Testimonials slider with animation */}
+                <motion.div
+                    ref={testimonialRef}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={testimonialControls}
+                    className="mt-12 sm:mt-20"
+                >
+                    <motion.h2
+                        className="text-2xl sm:text-3xl font-semibold text-center text-orange-500"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                    >
+                        What Our Clients Say
+                    </motion.h2>
                     <Projectcard />
-                </div>
+                </motion.div>
 
-                {/* Contact form */}
-                <div>
+                {/* Contact form with animation */}
+                <motion.div
+                    ref={contactRef}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={contactControls}
+                >
                     <ContactForm />
-                </div>
+                </motion.div>
             </div>
         </div>
     );

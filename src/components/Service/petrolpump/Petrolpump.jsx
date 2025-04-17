@@ -1,178 +1,211 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+"use client"
+import React from "react";
+import img1 from "../../../asset/image 23.webp";
+import { motion } from "framer-motion";
+import img2 from "../../../asset/petrol-pump.webp"
 
-export default function PetrolPumpUI() {
+const cardVariants = {
+    offscreen: {
+        y: 100,
+        opacity: 0
+    },
+    onscreen: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            bounce: 0.4,
+            duration: 0.8
+        }
+    }
+};
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.3,
+            delayChildren: 0.2
+        }
+    }
+};
+
+const imageVariants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+            duration: 0.6,
+            ease: "backOut"
+        }
+    }
+};
+
+export default function AchievementsCard() {
     return (
-        <div className="bg-white p-4 max-w-4xl mx-auto">
-            {/* Petrol Pump Section with Animation */}
+        <div className="overflow-hidden">
+            {/* Hero Section with Petrol Pump Image */}
             <motion.div
-                className="relative mb-6"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
+                className="w-full relative mb-9"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.8 }}
+                viewport={{ once: true, amount: 0.3 }}
             >
                 <motion.img
-                    src="/api/placeholder/600/350"
-                    alt="Petrol Pump"
-                    className="w-full rounded-lg shadow-md"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    src={img2}
+                    alt="Bricks Building Exterior"
+                    className="w-full h-auto object-cover"
+                    style={{ maxHeight: '90vh' }}
+                    initial={{ scale: 1.05 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 1.2 }}
+                    viewport={{ once: true }}
                 />
                 <motion.div
-                    className="absolute bottom-4 right-4 bg-white px-4 py-2 font-bold text-xl"
+                    className="absolute bottom-0 right-0 bg-white rounded-tl-lg p-8 md:p-8 lg:p-8"
                     initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
+                    viewport={{ once: true }}
                 >
-                    PETROL PUMP
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wider text-black">PETROL PUMP</h2>
                 </motion.div>
-            </motion.div>
-
-            {/* Placeholder Text with Animation */}
-            <motion.div
-                className="mb-8 text-gray-700"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.8 }}
-            >
-                <p className="mb-4">
-                    Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
-                <p>
-                    Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                </p>
             </motion.div>
 
             {/* Achievements Section */}
             <motion.div
-                className="mb-6"
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1, duration: 0.8 }}
+                className="max-w-6xl mx-auto p-6"
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={containerVariants}
             >
-                <motion.h2
-                    className="text-center text-3xl font-bold uppercase mb-6"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 0.5, type: "spring" }}
+                <motion.h1
+                    className="text-3xl md:text-4xl font-bold text-center tracking-wider mb-16 mt-20"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    viewport={{ once: true }}
                 >
-                    Achievements
-                </motion.h2>
+                    ACHIEVEMENTS
+                </motion.h1>
 
-                <div className="grid md:grid-cols-2 gap-6">
-                    {/* Award 1 */}
+                <div className="flex flex-col md:flex-row gap-8 lg:gap-12 justify-center items-stretch mt-20 md:mt-36">
+                    {/* First Award Card */}
                     <motion.div
-                        className="bg-gray-100 p-6 rounded-lg shadow-sm flex flex-col items-center"
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.4, duration: 0.6 }}
-                        whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                        className="relative flex flex-col md:flex-row items-center bg-gray-100 rounded-lg shadow-sm px-6 py-8 w-full max-w-lg"
+                        variants={cardVariants}
                     >
-                        <div className="relative mb-3">
-                            <div className="text-center">
-                                <motion.svg
-                                    className="w-16 h-16 text-yellow-400 mx-auto"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    initial={{ rotate: -180, opacity: 0 }}
-                                    animate={{ rotate: 0, opacity: 1 }}
-                                    transition={{ delay: 1.6, duration: 0.8, type: "spring" }}
-                                >
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                                </motion.svg>
-                                <motion.div
-                                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full w-10 h-10 flex items-center justify-center"
-                                    animate={{
-                                        scale: [1, 1.1, 1],
+                        {/* Trophy image with overflow effect */}
+                        <div className="relative flex-shrink-0 md:mr-6 -mt-24 md:-mt-32 mb-4 md:mb-0">
+                            <div className="relative">
+                                <motion.img
+                                    src={img1}
+                                    alt="Gold trophy"
+                                    className="h-48 md:h-60 w-auto object-contain relative z-10"
+                                    style={{
+                                        transform: 'translateY(30%)', // 30% outside (70% inside)
+                                        marginBottom: '-30%' // Compensate for the overlap
                                     }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 2,
-                                        repeatType: "reverse"
-                                    }}
-                                >
-                                    <span className="text-white text-xs font-bold">Best</span>
-                                </motion.div>
+                                    variants={imageVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                />
                             </div>
-                            <motion.div
-                                className="mt-2 w-20 h-32 bg-yellow-300 rounded-md mx-auto flex flex-col items-center justify-end"
-                                initial={{ height: 0 }}
-                                animate={{ height: 128 }}
-                                transition={{ delay: 1.8, duration: 0.5 }}
-                            >
-                                <div className="w-16 h-6 bg-yellow-400 mb-1 rounded-sm"></div>
-                            </motion.div>
                         </div>
-
-                        <h3 className="text-xl font-bold mt-2 mb-1 uppercase">Name of Award</h3>
-                        <p className="text-gray-600 text-sm text-center mb-3">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry.
-                        </p>
-                        <motion.button
-                            className="bg-orange-500 text-white px-4 py-1 rounded-md text-sm hover:bg-orange-600"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Read More
-                        </motion.button>
+                        {/* Text content */}
+                        <div className="flex-grow text-center md:text-left mt-4 md:mt-0">
+                            <motion.h2
+                                className="text-2xl font-bold mb-2"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                viewport={{ once: true }}
+                            >
+                                NAME OF AWARD
+                            </motion.h2>
+                            <motion.p
+                                className="mb-4 text-gray-700"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                viewport={{ once: true }}
+                            >
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </motion.p>
+                            <motion.button
+                                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                View Glimpse
+                            </motion.button>
+                        </div>
                     </motion.div>
 
-                    {/* Award 2 */}
+                    {/* Second Award Card */}
                     <motion.div
-                        className="bg-gray-100 p-6 rounded-lg shadow-sm flex flex-col items-center"
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.6, duration: 0.6 }}
-                        whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                        className="relative flex flex-col md:flex-row items-center bg-gray-100 rounded-lg shadow-sm px-6 py-8 w-full max-w-lg"
+                        variants={cardVariants}
                     >
-                        <div className="relative mb-3">
-                            <div className="text-center">
-                                <motion.svg
-                                    className="w-16 h-16 text-yellow-400 mx-auto"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                    initial={{ rotate: 180, opacity: 0 }}
-                                    animate={{ rotate: 0, opacity: 1 }}
-                                    transition={{ delay: 1.8, duration: 0.8, type: "spring" }}
-                                >
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                                </motion.svg>
-                                <motion.div
-                                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full w-10 h-10 flex items-center justify-center"
-                                    animate={{
-                                        scale: [1, 1.1, 1],
+                        {/* Trophy image with overflow effect */}
+                        <div className="relative flex-shrink-0 md:mr-6 -mt-24 md:-mt-32 mb-4 md:mb-0">
+                            <div className="relative">
+                                <motion.img
+                                    src={img1}
+                                    alt="Gold trophy"
+                                    className="h-48 md:h-60 w-auto object-contain relative z-10"
+                                    style={{
+                                        transform: 'translateY(30%)', // 30% outside (70% inside)
+                                        marginBottom: '-30%' // Compensate for the overlap
                                     }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 2,
-                                        repeatType: "reverse",
-                                        delay: 0.5
-                                    }}
-                                >
-                                    <span className="text-white text-xs font-bold">Best</span>
-                                </motion.div>
+                                    variants={imageVariants}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true }}
+                                />
                             </div>
-                            <motion.div
-                                className="mt-2 w-20 h-32 bg-yellow-300 rounded-md mx-auto flex flex-col items-center justify-end"
-                                initial={{ height: 0 }}
-                                animate={{ height: 128 }}
-                                transition={{ delay: 2, duration: 0.5 }}
-                            >
-                                <div className="w-16 h-6 bg-yellow-400 mb-1 rounded-sm"></div>
-                            </motion.div>
                         </div>
-
-                        <h3 className="text-xl font-bold mt-2 mb-1 uppercase">Name of Award</h3>
-                        <p className="text-gray-600 text-sm text-center mb-3">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry.
-                        </p>
-                        <motion.button
-                            className="bg-orange-500 text-white px-4 py-1 rounded-md text-sm hover:bg-orange-600"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Read More
-                        </motion.button>
+                        {/* Text content */}
+                        <div className="flex-grow text-center md:text-left mt-4 md:mt-0">
+                            <motion.h2
+                                className="text-2xl font-bold mb-2"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.4 }}
+                                viewport={{ once: true }}
+                            >
+                                NAME OF AWARD
+                            </motion.h2>
+                            <motion.p
+                                className="mb-4 text-gray-700"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                                viewport={{ once: true }}
+                            >
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            </motion.p>
+                            <motion.button
+                                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition duration-300"
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                transition={{ delay: 0.6 }}
+                                viewport={{ once: true }}
+                            >
+                                View Glimpse
+                            </motion.button>
+                        </div>
                     </motion.div>
                 </div>
             </motion.div>

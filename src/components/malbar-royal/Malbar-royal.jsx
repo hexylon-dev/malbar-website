@@ -1,16 +1,65 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Contact from '../../components/Home/Contact';
 import ImageSlider from '../Shared/image-slider';
 import TestimonialSlider from '../Shared/testimonials';
-import imgcoursel from '../../asset/royal-coursel.png'
-import img1 from '../../asset/royal-img-1.webp'
-import img2 from '../../asset/royal-img-2.webp'
-import img3 from '../../asset/royal-img-3.webp'
-import img4 from '../../asset/royal-img-4 (1).webp'
+import imgcoursel from '../../asset/royal-coursel.png';
+import img1 from '../../asset/royal-img-1.webp';
+import img2 from '../../asset/royal-img-2.webp';
+import img3 from '../../asset/royal-img-3.webp';
+import img4 from '../../asset/royal-img-4 (1).webp';
 import Projectcard from '../Home/ProjectCard';
 
+// Animation variants
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.2,
+            when: "beforeChildren"
+        }
+    }
+};
 
+const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+        }
+    }
+};
+
+const fadeIn = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { duration: 0.8 }
+    }
+};
+
+const slideInFromLeft = {
+    hidden: { x: -50, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.6 }
+    }
+};
+
+const slideInFromRight = {
+    hidden: { x: 50, opacity: 0 },
+    visible: {
+        x: 0,
+        opacity: 1,
+        transition: { duration: 0.6 }
+    }
+};
 
 const Savitamalbar = () => {
     const images = [
@@ -40,36 +89,82 @@ const Savitamalbar = () => {
             alt: "Front entrance detail of Mediterranean style home"
         }
     ];
+
     return (
         <div className="min-h-screen pt-16 sm:pt-20">
             <div className="container mx-auto px-4 py-8">
-                {/* <h1 className="text-4xl font-bold text-orange-500 mb-8">Malbar Royal</h1> */}
-
                 {/* Property listings */}
-                <div className="mb-16 lg:px-32">
-                    <h2 className="text-3xl font-bold mb-4 ml-12">Malbar Royal</h2>
-                    <p className="text-gray-700 mb-2 ml-12">
-                        <strong>Address :</strong>  Raspan Cross Rd, Opp. Gunjan Garden Restaurant, Near Bhakti Circle, Nikol, North East, Ahmedabad
-                    </p>
-                    <p className="text-gray-700 mb-4 ml-12">
+                <motion.div
+                    className="mb-16 lg:px-32"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={containerVariants}
+                >
+                    <motion.h2
+                        className="text-3xl font-bold mb-4 ml-12"
+                        variants={slideInFromLeft}
+                    >
+                        Malbar Royal
+                    </motion.h2>
+                    <motion.p
+                        className="text-gray-700 mb-2 ml-12"
+                        variants={itemVariants}
+                    >
+                        <strong>Address :</strong> Raspan Cross Rd, Opp. Gunjan Garden Restaurant, Near Bhakti Circle, Nikol, North East, Ahmedabad
+                    </motion.p>
+                    <motion.p
+                        className="text-gray-700 mb-4 ml-12"
+                        variants={itemVariants}
+                    >
                         Malbar Royal is a sophisticated and luxurious retreat that reflects that magical merging of inspiration and architecture. Living is easy in this impressive, generously spacious residence. The project is architected by Savita. The development is located at Nikol, Ahmedabad.ing value
-                    </p>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12">
+                    </motion.p>
+                    <motion.button
+                        className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12"
+                        variants={itemVariants}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
                         Enquire Now
-                    </button>
-                </div>
+                    </motion.button>
+                </motion.div>
+
                 {/* Image slider */}
-                <div className="mb-12">
+                <motion.div
+                    className="mb-12"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
                     <ImageSlider images={images} />
-                </div>
+                </motion.div>
+
                 {/* Testimonials slider at the bottom */}
-                <div className="mt-20">
-                    <h2 className="text-3xl font-semibold text-center text-orange-500">What Our Clients Say</h2>
+                <motion.div
+                    className="mt-20"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
+                    <motion.h2
+                        className="text-3xl font-semibold text-center text-orange-500"
+                        variants={itemVariants}
+                    >
+                        What Our Clients Say
+                    </motion.h2>
                     <Projectcard />
-                </div>
-                <div>
+                </motion.div>
+
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    variants={fadeIn}
+                >
                     <Contact />
-                </div>
+                </motion.div>
             </div>
         </div>
     );
