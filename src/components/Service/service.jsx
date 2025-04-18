@@ -125,7 +125,7 @@ export default function Services() {
             </motion.div>
 
             {/* Container for the rest of the content */}
-            <div className="max-w-6xl mx-auto px-4 py-8">
+            <div className="max-w-6xl mx-auto">
                 {/* Header Section with scroll trigger */}
                 <motion.div
                     ref={headerRef}
@@ -140,7 +140,7 @@ export default function Services() {
                     </p>
                     <p className="text-gray-600 mb-4">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />
-                        It has been the industry's standard dummy text ever since the 1500s.
+                        {/* It has been the industry's standard dummy text ever since the 1500s. */}
                     </p>
                 </motion.div>
 
@@ -153,7 +153,7 @@ export default function Services() {
                     animate={isProjectsHeaderInView ? "visible" : "hidden"}
                 >
                     <motion.h1
-                        className="text-2xl font-bold mb-4"
+                        className="text-[40px] font-bold mb-4 mt-10"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={isProjectsHeaderInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.5 }}

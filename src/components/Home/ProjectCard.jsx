@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import img1 from "../../asset/cartoon.png"
+import img1 from "../../asset/cartoon.png";
 
 const Projectcard = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -8,152 +8,163 @@ const Projectcard = () => {
     const testimonials = [
         {
             id: 1,
-            name: "Parth",
-            title: "Lead designer",
+            name: "John Smith",
+            title: "Marketing Director",
             image: img1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
+            text: "Working with this team transformed our online presence. Their attention to detail and commitment to excellence truly sets them apart from other agencies we've partnered with."
         },
         {
             id: 2,
-            name: "Parth",
-            title: "Lead designer",
+            name: "Sarah Johnson",
+            title: "Product Manager",
             image: img1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu. Faucibus venenatis felis id augue sit cursus pellentesque enim"
+            text: "The level of creativity and technical expertise demonstrated by this team exceeded our expectations. Our project was delivered on time and the results have been outstanding."
         },
         {
             id: 3,
-            name: "Parth",
-            title: "Lead designer",
+            name: "Michael Chen",
+            title: "CEO, TechSolutions",
             image: img1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
+            text: "I've worked with many development teams over the years, but none have matched the professionalism and quality of work that this team consistently delivers."
         },
         {
             id: 4,
-            name: "Parth",
-            title: "Lead designer",
+            name: "Emily Rodriguez",
+            title: "Design Lead",
             image: img1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
+            text: "Their collaborative approach made the entire process smooth and enjoyable. They truly understand how to bring a vision to life while adding their own expertise."
         },
         {
             id: 5,
-            name: "Parth",
-            title: "Lead designer",
+            name: "David Kim",
+            title: "Operations Manager",
             image: img1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cursus nibh mauris, nec turpis orci lectus maecenas. Suspendisse sed magna eget nibh in turpis. Consequat duis diam lacus arcu."
+            text: "From initial concept to final delivery, the team demonstrated exceptional skill and dedication. I wouldn't hesitate to recommend them to anyone seeking top-tier service."
         }
     ];
+
+    const getWrappedIndex = (index) => {
+        const totalItems = testimonials.length;
+        return ((index % totalItems) + totalItems) % totalItems;
+    };
+
+    // Display 3 cards at once
+    const getVisibleTestimonials = () => {
+        return [
+            testimonials[getWrappedIndex(activeIndex)],
+            testimonials[getWrappedIndex(activeIndex + 1)],
+            testimonials[getWrappedIndex(activeIndex + 2)]
+        ];
+    };
 
     // Auto-rotate testimonials
     useEffect(() => {
         const interval = setInterval(() => {
-            handleDotClick((activeIndex + 1) % testimonials.length);
+            handleNext();
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [activeIndex, testimonials.length]);
+    }, [activeIndex]);
+
+    const handlePrev = () => {
+        if (isAnimating) return;
+        setIsAnimating(true);
+        setActiveIndex(prev => getWrappedIndex(prev - 1));
+        setTimeout(() => setIsAnimating(false), 500);
+    };
+
+    const handleNext = () => {
+        if (isAnimating) return;
+        setIsAnimating(true);
+        setActiveIndex(prev => getWrappedIndex(prev + 1));
+        setTimeout(() => setIsAnimating(false), 500);
+    };
 
     const handleDotClick = (index) => {
         if (isAnimating) return;
-
         setIsAnimating(true);
         setActiveIndex(index);
-
-        // Reset animation state
-        setTimeout(() => {
-            setIsAnimating(false);
-        }, 500);
+        setTimeout(() => setIsAnimating(false), 500);
     };
 
+    const visibleTestimonials = getVisibleTestimonials();
+
     return (
-        <div className="w-full bg-white py-12 px-4">
-            <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl font-bold text-center mb-8">
-                    What <span className="text-orange-500">client</span> say about us
-                </h2>
-                <p className="text-center text-gray-600 mb-12">
-                    Any question or remarks? Just write us a message!
-                </p>
+        <div className="w-full bg-gray-50 py-16 px-4">
+            <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold mb-4">
+                        What Our <span className="text-orange-500">Clients</span> Say
+                    </h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                        Don't just take our word for it. Hear what our clients have to say about their experience working with our team.
+                    </p>
+                </div>
 
                 <div className="relative">
-                    <div className="flex justify-between items-center">
-                        {/* Left testimonial */}
-                        <div className={`w-1/3 relative transition-all duration-500 ${isAnimating ? 'opacity-0 translate-x-4' : 'opacity-100'}`}>
-                            <div className="bg-white p-6 relative z-10">
-                                <div className="flex flex-col items-center mb-4">
-                                    <div className="w-20 h-20 rounded-full overflow-hidden mb-2 border-2 border-blue-100">
-                                        <img src={testimonials[(activeIndex + testimonials.length - 1) % testimonials.length].image} alt="Profile" className="w-full h-full object-cover" />
-                                    </div>
-                                    <h3 className="font-medium text-lg">{testimonials[(activeIndex + testimonials.length - 1) % testimonials.length].name}</h3>
-                                    <p className="text-gray-500 text-sm">{testimonials[(activeIndex + testimonials.length - 1) % testimonials.length].title}</p>
-                                </div>
-                                <p className="text-sm text-gray-600 text-center">
-                                    {testimonials[(activeIndex + testimonials.length - 1) % testimonials.length].text}
-                                </p>
-                            </div>
-                            {/* Orange curved shape */}
-                            <div className="absolute bottom-0 right-0 w-3/4 h-24">
-                                <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                                    <path d="M300,0 L300,100 L100,100 C150,100 300,70 300,0 Z" fill="#FF6B00" />
-                                </svg>
-                            </div>
-                        </div>
+                    {/* Navigation arrows */}
+                    <button
+                        onClick={handlePrev}
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full shadow-lg p-3 z-10 text-orange-500 hover:bg-orange-50 transition-all"
+                        aria-label="Previous testimonial"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
 
-                        {/* Center testimonial */}
-                        <div className={`w-1/3 relative mx-4 transition-all duration-500 ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
-                            <div className="bg-white p-8 relative z-10">
-                                <div className="flex flex-col items-center mb-4">
-                                    <div className="w-20 h-20 rounded-full overflow-hidden mb-2 border-2 border-blue-100">
-                                        <img src={testimonials[activeIndex].image} alt="Profile" className="w-full h-full object-cover" />
-                                    </div>
-                                    <h3 className="font-medium text-lg">{testimonials[activeIndex].name}</h3>
-                                    <p className="text-gray-500 text-sm">{testimonials[activeIndex].title}</p>
-                                </div>
-                                <div className="text-center">
-                                    <span className="text-orange-500 text-6xl absolute top-32 left-6">"</span>
-                                    <p className="text-sm text-gray-600 pl-4">
-                                        {testimonials[activeIndex].text}
-                                    </p>
-                                </div>
-                            </div>
-                            {/* Orange curved shape */}
-                            <div className="absolute -bottom-8 left-0 w-full h-32">
-                                <svg className="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
-                                    <path d="M0,0 L400,0 L400,60 C250,100 150,100 0,60 Z" fill="#FF6B00" />
-                                </svg>
-                            </div>
-                        </div>
+                    <button
+                        onClick={handleNext}
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full shadow-lg p-3 z-10 text-orange-500 hover:bg-orange-50 transition-all"
+                        aria-label="Next testimonial"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
 
-                        {/* Right testimonial */}
-                        <div className={`w-1/3 relative transition-all duration-500 ${isAnimating ? 'opacity-0 -translate-x-4' : 'opacity-100'}`}>
-                            <div className="bg-white p-6 relative z-10">
-                                <div className="flex flex-col items-center mb-4">
-                                    <div className="w-20 h-20 rounded-full overflow-hidden mb-2 border-2 border-blue-100">
-                                        <img src={testimonials[(activeIndex + 1) % testimonials.length].image} alt="Profile" className="w-full h-full object-cover" />
+                    {/* Testimonials Cards */}
+                    <div className={`flex justify-between items-stretch gap-6 transition-all duration-500 ${isAnimating ? 'opacity-50' : 'opacity-100'}`}>
+                        {visibleTestimonials.map((item, index) => (
+                            <div
+                                key={`${item.id}-${index}`}
+                                className={`w-1/3 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500 ${isAnimating ? 'transform scale-95' : 'transform scale-100'
+                                    }`}
+                            >
+                                <div className="h-2 bg-orange-200"></div>
+                                <div className="p-6">
+                                    {/* Quote icon */}
+                                    <div className="flex justify-end mb-4">
+                                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11.55 26.25C13.65 26.25 15.4 27.09 16.8 28.77C18.2 30.45 18.9 32.34 18.9 34.44C18.9 36.82 18.06 38.85 16.38 40.53C14.7 42.21 12.67 43.05 10.29 43.05C7.35 43.05 5.04 41.79 3.36 39.27C1.68 36.75 0.84 33.18 0.84 28.56C0.84 24.78 1.54 21.21 2.94 17.85C4.34 14.49 6.16 11.76 8.4 9.66C10.64 7.56 13.02 6.09 15.54 5.25L18.9 11.34C16.38 12.46 14.28 14.28 12.6 16.8C10.92 19.32 10.08 22.05 10.08 24.99C10.22 25.13 10.57 25.41 11.13 25.83C11.69 26.11 11.97 26.25 11.55 26.25ZM32.55 26.25C34.65 26.25 36.4 27.09 37.8 28.77C39.2 30.45 39.9 32.34 39.9 34.44C39.9 36.82 39.06 38.85 37.38 40.53C35.7 42.21 33.67 43.05 31.29 43.05C28.35 43.05 26.04 41.79 24.36 39.27C22.68 36.75 21.84 33.18 21.84 28.56C21.84 24.78 22.54 21.21 23.94 17.85C25.34 14.49 27.16 11.76 29.4 9.66C31.64 7.56 34.02 6.09 36.54 5.25L39.9 11.34C37.38 12.46 35.28 14.28 33.6 16.8C31.92 19.32 31.08 22.05 31.08 24.99C31.22 25.13 31.57 25.41 32.13 25.83C32.69 26.11 32.97 26.25 32.55 26.25Z" fill="#FFE1CC" />
+                                        </svg>
                                     </div>
-                                    <h3 className="font-medium text-lg">{testimonials[(activeIndex + 1) % testimonials.length].name}</h3>
-                                    <p className="text-gray-500 text-sm">{testimonials[(activeIndex + 1) % testimonials.length].title}</p>
+
+                                    {/* Testimonial text */}
+                                    <p className="text-gray-700 mb-6 min-h-16">{item.text}</p>
+
+                                    <div className="flex items-center mt-6 pt-6 border-t border-gray-100">
+                                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-orange-100">
+                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="ml-4">
+                                            <h3 className="font-bold text-lg">{item.name}</h3>
+                                            <p className="text-orange-500">{item.title}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <p className="text-sm text-gray-600 text-center">
-                                    {testimonials[(activeIndex + 1) % testimonials.length].text}
-                                </p>
                             </div>
-                            {/* Orange curved shape */}
-                            <div className="absolute bottom-0 left-0 w-3/4 h-24">
-                                <svg className="w-full h-full" viewBox="0 0 300 100" preserveAspectRatio="none">
-                                    <path d="M0,0 L0,100 L200,100 C150,100 0,70 0,0 Z" fill="#FF6B00" />
-                                </svg>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
                     {/* Navigation dots */}
-                    <div className="flex justify-center mt-16">
+                    <div className="flex justify-center mt-10">
                         {testimonials.map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleDotClick(index)}
-                                className={`w-2 h-2 mx-1 rounded-full transition-all duration-300 ${index === activeIndex
-                                    ? 'bg-orange-500 w-3 h-3'
+                                className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 ${index === activeIndex
+                                    ? 'bg-orange-500 w-6'
                                     : 'bg-gray-300 hover:bg-orange-300'
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}

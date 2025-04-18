@@ -22,7 +22,7 @@ const Hero = () => {
         {
             src: img2,
             alt: "Malbar Prime Interior",
-            title: "MALBAR ROYAl",
+            title: "MALBAR ROYAL",
             // description: "Explore our spacious interior with a variety of shopping options.",
             link: "/Malbar-royal"
         },
@@ -44,13 +44,12 @@ const Hero = () => {
             src: img1,
             alt: "Malbar Prime Cafe",
             title: "MALBAR PRIME",
-
             link: "/malbar-prime"
         },
         {
             src: img4,
-            alt: "Surya-kiran-bungalows",
-            title: "Surya-kiran-bungalows",
+            alt: "Surya kiran bungalows",
+            title: "SURYA KIRAN BUNGLOWS",
             link: "/Surya-kiran-bungalows"
         },
     ];
@@ -98,7 +97,7 @@ const Hero = () => {
                             className="object-cover w-full h-full"
                         />
 
-                        <div className="absolute bottom-0 right-0 p-8 text-left bg-white bg-opacity-110 w-[600px] rounded-2xl h-[12rem]">
+                        <div className="absolute bottom-0 right-0 p-8 text-left bg-white bg-opacity-110 w-[800px] rounded-2xl h-[12rem]">
                             <h2 className="text-5xl font-bold text-black mb-4 mt-3">{image.title}</h2>
 
                             {/* Using React Router Link */}

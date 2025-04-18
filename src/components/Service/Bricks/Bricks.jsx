@@ -52,11 +52,12 @@ export default function BricksShowcase() {
                     style={{ transitionDelay: '500ms' }}
                 >
                     <h2
-                        className={`text-4xl font-bold tracking-wider text-black transition-opacity duration-800 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        className={`inline-block min-w-[300px] text-4xl font-bold tracking-wider text-black transition-opacity duration-800 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
                         style={{ transitionDelay: '1000ms' }}
                     >
                         BRICKS
                     </h2>
+
                 </div>
             </div>
 

@@ -3,18 +3,33 @@
 @tailwind components;
 @tailwind utilities;
 
-.font-orbitron {
-  font-family: 'Orbitron', sans-serif;
-  /* font-family: ; */
+@font-face {
+  font-family: 'TrajanPro';
+  src: url('./asset//trajan-pro//TrajanPro-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-html {
+/* .font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+  /* font-family: ; */
+/* } */
+
+*/ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: 'DM Sans', sans-serif;
-  /* font-family: 'trajan-pro', serif; */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'TrajanPro', serif;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
 }
 
 

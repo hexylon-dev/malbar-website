@@ -84,7 +84,7 @@ export default function AchievementsCard() {
                 variants={containerVariants}
             >
                 <motion.h1
-                    className="text-3xl md:text-4xl font-bold text-center tracking-wider mb-16 mt-20"
+                    className="text-[40px] md:text-4xl font-bold text-center tracking-wider mb-16 mt-20"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}

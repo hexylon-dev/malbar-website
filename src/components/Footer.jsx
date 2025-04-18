@@ -1,5 +1,6 @@
 import React from 'react';
 import logo from '../asset/Group 1000001769 1.png';
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return (
@@ -19,14 +20,21 @@ export default function Footer() {
                     </div>
 
                     {/* Service and Company Links Container */}
+
                     <div className="flex flex-row justify-between md:space-x-16">
                         {/* Service Links */}
                         <div className="mb-8 md:mb-0">
                             <h3 className="text-orange-500 font-medium mb-4">Service</h3>
                             <ul className="space-y-2">
-                                <li className="text-sm text-gray-600">Petrolium</li>
-                                <li className="text-sm text-gray-600">Bricks</li>
-                                <li className="text-sm text-gray-600">Service</li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/Petrolpump">Petroleum</Link>
+                                </li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/BricksShowcase">Bricks</Link>
+                                </li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/services">Service</Link>
+                                </li>
                             </ul>
                         </div>
 
@@ -34,12 +42,19 @@ export default function Footer() {
                         <div>
                             <h3 className="text-orange-500 font-medium mb-4">Projects</h3>
                             <ul className="space-y-2">
-                                <li className="text-sm text-gray-600">Residential</li>
-                                <li className="text-sm text-gray-600">Commercial</li>
-                                <li className="text-sm text-gray-600">On Going</li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/projects/residential">Residential</Link>
+                                </li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/projects/commercial">Commercial</Link>
+                                </li>
+                                <li className="text-sm text-gray-600">
+                                    <Link href="/projects/on-going">On Going</Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
+
                 </div>
 
                 {/* Divider */}
