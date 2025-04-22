@@ -119,7 +119,7 @@ export default function WhyChooseUs() {
 
     return (
         <section className="py-16 px-4 max-w-7xl mx-auto" id="why-choose-us">
-            <div ref={ref} className="min-h-[90vh] flex flex-col justify-center">
+            <div ref={ref} className="min-h-[90vh] flex flex-col justify-start">
                 <motion.div
                     initial="hidden"
                     animate={controls}
@@ -156,15 +156,17 @@ export default function WhyChooseUs() {
                     }}
                     className="text-center mb-6"
                 >
-                    <h1 className="text-5xl font-bold mb-6">Why Choose Us</h1>
-                    <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed">
+                    <h1 className="text-5xl md:text-5xl font-bold mb-6"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}>Why Choose Us</h1>
+                    <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed px-4">
                         What makes us unique is our unwavering commitment to excellence. We're not just a travel agency; we're your
                         trusted travel companion. Discover the reasons why travelers like you choose us for their adventures
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
-                    <div className="relative h-[500px] flex items-center justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16 mr-16">
+                    {/* Image gallery with responsive layouts */}
+                    <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
                         {/* Main image with border */}
                         <motion.div
                             initial="hidden"
@@ -185,7 +187,8 @@ export default function WhyChooseUs() {
                                     },
                                 },
                             }}
-                            className="absolute z-10 w-[60%] h-[100%] rounded-3xl overflow-hidden shadow-xl border-4 border-white"
+                            className="absolute z-10 w-[60%] h-auto aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border-4 border-white "
+                            style={{ maxHeight: "90%" }}
                         >
                             <img
                                 src={img1}
@@ -194,7 +197,7 @@ export default function WhyChooseUs() {
                             />
                         </motion.div>
 
-                        {/* Second image with border */}
+                        {/* Second image with border - adjusted positioning for mobile */}
                         <motion.div
                             initial="hidden"
                             animate={controls}
@@ -215,8 +218,8 @@ export default function WhyChooseUs() {
                                     },
                                 },
                             }}
-                            className="absolute z-20 w-[40%] h-[60%] rounded-3xl overflow-hidden shadow-xl right-2 top-[30%] border-8 border-white"
-
+                            className="absolute z-20 w-[40%] h-auto aspect-square rounded-3xl overflow-hidden shadow-xl right-5 md:right-10 top-[40%] border-4 md:border-8 border-white"
+                            style={{ maxHeight: "60%" }}
                         >
                             <img
                                 src={img2}
@@ -226,7 +229,8 @@ export default function WhyChooseUs() {
                         </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-10">
+                    {/* Stats grid - now responsive */}
+                    <div className="grid grid-cols-2 gap-5 md:gap-10 px-1 md:px-0 ">
                         <Gallery end={20} title="Total Projects" delay={800} />
                         <Gallery end={200} title="Happy Clients" delay={1000} />
                         <Gallery end={5} title="Current Projects" delay={1200} />

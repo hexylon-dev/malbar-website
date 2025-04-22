@@ -56,7 +56,7 @@ export default function About() {
         <div className="w-full min-h-screen flex items-center relative overflow-hidden">
             {/* Rotated Square Background (4-degree angle) */}
             <motion.div
-                className="absolute inset-0 w-full h-full bg-white"
+                className="absolute inset-0 w-full h-full "
                 style={{
                     rotate: "4deg",
                     scale: 1.1,
@@ -80,10 +80,14 @@ export default function About() {
                     viewport={{ once: false, amount: 0.3 }}
                     className="mb-8"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold">
+                    <h1
+                        className="text-4xl md:text-5xl font-bold"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
+                    >
                         About <span className="text-orange-500">Myself</span>
                     </h1>
-                    <p className="text-gray-600 mt-2">Any assistance or workplace. Just write up or messaged</p>
+                    <p className="text-gray-600 mt-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        Any assistance or workplace. Just write up or messaged</p>
                 </motion.div>
 
                 <div className="flex flex-col md:flex-row gap-12">
@@ -129,7 +133,8 @@ export default function About() {
                         }}
                         className="w-full md:w-3/5 p-6 rounded-lg"
                     >
-                        <h2 className="text-3xl font-bold mb-6">Nrupansh Dalwadi</h2>
+                        <h2 className="text-3xl font-bold mb-6"
+                            style={{ fontFamily: 'Poppins, sans-serif' }}>Nrupansh Dalwadi</h2>
 
                         {/* Social Icons */}
                         <div className="flex gap-4 mb-8">
@@ -225,6 +230,7 @@ export default function About() {
                                 whileHover={{ scale: 1.05, boxShadow: "0 10px 20px rgba(0,0,0,0.1)" }}
                                 whileTap={{ scale: 0.98 }}
                                 href="/contact"
+                                style={{ fontFamily: 'Poppins, sans-serif' }}
                                 className="bg-orange-500 text-white px-6 py-3 rounded-lg font-medium text-lg hover:bg-orange-600 transition-colors duration-300 shadow-md"
                             >
                                 Contact Us

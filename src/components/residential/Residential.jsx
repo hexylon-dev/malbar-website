@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import ContactForm from '../Shared/form';
@@ -12,6 +12,10 @@ import img4 from "../../asset/surya-4.png";
 import Projectcard from '../Home/ProjectCard';
 
 const SuryaKiranBungalows = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const images = [
         { id: 1, src: imgcoursel, alt: "Luxury villa" },
         { id: 2, src: img1, alt: "Night view" },
@@ -33,6 +37,7 @@ const SuryaKiranBungalows = () => {
                         className="text-3xl font-bold mb-4"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                         transition={{ delay: 0.2, duration: 0.6 }}
                     >
                         Surya Kiran Bungalows
@@ -67,7 +72,7 @@ const SuryaKiranBungalows = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
+                    viewport={{}}
                 >
                     <ImageSlider images={images} />
                 </motion.div>
@@ -77,9 +82,10 @@ const SuryaKiranBungalows = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.7 }}
-                    viewport={{ once: true }}
+                    viewport={{}}
                 >
-                    <h2 className="text-3xl font-semibold text-center text-orange-500">What Our Clients Say</h2>
+                    {/* <h2 className="text-3xl font-semibold text-center text-orange-500"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}>What Our Clients Say</h2> */}
                     <Projectcard />
                 </motion.div>
 
@@ -87,7 +93,7 @@ const SuryaKiranBungalows = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8 }}
-                    viewport={{ once: true }}
+                    viewport={{}}
                 >
                     <ContactForm />
                 </motion.div>

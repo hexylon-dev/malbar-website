@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Contact from '../../components/Home/Contact';
 import ImageSlider from '../Shared/image-slider';
@@ -10,7 +10,6 @@ import img3 from '../../asset/royal-img-3.webp';
 import img4 from '../../asset/royal-img-4 (1).webp';
 import Projectcard from '../Home/ProjectCard';
 
-// Animation variants
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -52,42 +51,17 @@ const slideInFromLeft = {
     }
 };
 
-const slideInFromRight = {
-    hidden: { x: 50, opacity: 0 },
-    visible: {
-        x: 0,
-        opacity: 1,
-        transition: { duration: 0.6 }
-    }
-};
-
 const Savitamalbar = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const images = [
-        {
-            id: 1,
-            src: imgcoursel,
-            alt: "Luxury villa with Mediterranean architecture featuring white facade and ornate balconies"
-        },
-        {
-            id: 2,
-            src: img1,
-            alt: "Night view of residential villas with lights"
-        },
-        {
-            id: 3,
-            src: img2,
-            alt: "Row of upscale residential townhouses"
-        },
-        {
-            id: 4,
-            src: img3,
-            alt: "Side view of residential development"
-        },
-        {
-            id: 5,
-            src: img4,
-            alt: "Front entrance detail of Mediterranean style home"
-        }
+        { id: 1, src: imgcoursel, alt: "Luxury villa with Mediterranean architecture" },
+        { id: 2, src: img1, alt: "Night view of residential villas with lights" },
+        { id: 3, src: img2, alt: "Row of upscale residential townhouses" },
+        { id: 4, src: img3, alt: "Side view of residential development" },
+        { id: 5, src: img4, alt: "Front entrance detail of Mediterranean style home" }
     ];
 
     return (
@@ -98,26 +72,21 @@ const Savitamalbar = () => {
                     className="mb-16 lg:px-32"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ margin: "-100px" }}
                     variants={containerVariants}
                 >
                     <motion.h2
                         className="text-3xl font-bold mb-4 ml-12"
                         variants={slideInFromLeft}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                         Malbar Royal
                     </motion.h2>
-                    <motion.p
-                        className="text-gray-700 mb-2 ml-12"
-                        variants={itemVariants}
-                    >
+                    <motion.p className="text-gray-700 mb-2 ml-12" variants={itemVariants}>
                         <strong>Address :</strong> Raspan Cross Rd, Opp. Gunjan Garden Restaurant, Near Bhakti Circle, Nikol, North East, Ahmedabad
                     </motion.p>
-                    <motion.p
-                        className="text-gray-700 mb-4 ml-12"
-                        variants={itemVariants}
-                    >
-                        Malbar Royal is a sophisticated and luxurious retreat that reflects that magical merging of inspiration and architecture. Living is easy in this impressive, generously spacious residence. The project is architected by Savita. The development is located at Nikol, Ahmedabad.ing value
+                    <motion.p className="text-gray-700 mb-4 ml-12" variants={itemVariants}>
+                        Malbar Royal is a sophisticated and luxurious retreat that reflects that magical merging of inspiration and architecture. Living is easy in this impressive, generously spacious residence. The project is architected by Savita. The development is located at Nikol, Ahmedabad.
                     </motion.p>
                     <motion.button
                         className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12"
@@ -134,33 +103,26 @@ const Savitamalbar = () => {
                     className="mb-12"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
                     variants={fadeIn}
                 >
                     <ImageSlider images={images} />
                 </motion.div>
 
-                {/* Testimonials slider at the bottom */}
+                {/* Testimonials / Projects */}
                 <motion.div
                     className="mt-20"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ margin: "-50px" }}
                     variants={fadeIn}
                 >
-                    <motion.h2
-                        className="text-3xl font-semibold text-center text-orange-500"
-                        variants={itemVariants}
-                    >
-                        What Our Clients Say
-                    </motion.h2>
                     <Projectcard />
                 </motion.div>
 
+                {/* Contact */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
                     variants={fadeIn}
                 >
                     <Contact />

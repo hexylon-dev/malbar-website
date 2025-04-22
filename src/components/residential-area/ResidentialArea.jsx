@@ -56,7 +56,8 @@ export default function ResidentialArea() {
 
             {/* Projects Section */}
             <div className="">
-                <h2 className="text-[40px] font-bold">All projects</h2>
+                <h2 className="text-[40px] font-bold"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}>All projects</h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {projects.map((project, index) => (

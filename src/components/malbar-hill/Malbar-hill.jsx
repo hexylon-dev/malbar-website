@@ -14,6 +14,11 @@ import img5 from "../../asset/Hills-5.webp";
 import Projectcard from '../Home/ProjectCard';
 
 const Malbarhills = () => {
+    useEffect(() => {
+        // Scroll to top when the page loads
+        window.scrollTo(0, 0);
+    }, []);
+
     const images = [
         {
             id: 1,
@@ -47,19 +52,16 @@ const Malbarhills = () => {
         }
     ];
 
-    // Animation controls for different sections
     const headerControls = useAnimation();
     const imageControls = useAnimation();
     const testimonialControls = useAnimation();
     const contactControls = useAnimation();
 
-    // Intersection observers for different sections
     const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [imageRef, imageInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [testimonialRef, testimonialInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [contactRef, contactInView] = useInView({ threshold: 0.2, triggerOnce: true });
 
-    // Trigger animations when sections come into view
     useEffect(() => {
         if (headerInView) {
             headerControls.start({
@@ -103,7 +105,7 @@ const Malbarhills = () => {
     return (
         <div className="min-h-screen pt-16 sm:pt-20 overflow-hidden">
             <div className="container mx-auto px-4 py-4 sm:py-8">
-                {/* Header Section with Animation */}
+                {/* Header Section */}
                 <motion.div
                     ref={headerRef}
                     initial={{ opacity: 0, y: 50 }}
@@ -115,6 +117,7 @@ const Malbarhills = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.6 }}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                         Malabar Hills
                     </motion.h2>
@@ -150,7 +153,7 @@ const Malbarhills = () => {
                     </motion.button>
                 </motion.div>
 
-                {/* Image slider with animation */}
+                {/* Image Slider */}
                 <motion.div
                     ref={imageRef}
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -160,25 +163,17 @@ const Malbarhills = () => {
                     <ImageSlider images={images} />
                 </motion.div>
 
-                {/* Testimonials slider with animation */}
+                {/* Project Card or Testimonials */}
                 <motion.div
                     ref={testimonialRef}
                     initial={{ opacity: 0, y: 50 }}
                     animate={testimonialControls}
                     className="mt-12 sm:mt-20"
                 >
-                    <motion.h2
-                        className="text-2xl sm:text-3xl font-semibold text-center text-orange-500"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                    >
-                        What Our Clients Say
-                    </motion.h2>
                     <Projectcard />
                 </motion.div>
 
-                {/* Contact form with animation */}
+                {/* Contact Form */}
                 <motion.div
                     ref={contactRef}
                     initial={{ opacity: 0, y: 50 }}

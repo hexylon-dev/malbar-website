@@ -14,54 +14,32 @@ import img5 from "../../asset/gold-5.webp"
 import Projectcard from '../Home/ProjectCard';
 
 const Malbargold = () => {
+    // Scroll to top on page load
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, []);
+
     const images = [
-        {
-            id: 1,
-            src: imgcoursel,
-            alt: "Luxury villa with Mediterranean architecture featuring white facade and ornate balconies"
-        },
-        {
-            id: 2,
-            src: img1,
-            alt: "Night view of residential villas with lights"
-        },
-        {
-            id: 3,
-            src: img2,
-            alt: "Row of upscale residential townhouses"
-        },
-        {
-            id: 4,
-            src: img3,
-            alt: "Side view of residential development"
-        },
-        {
-            id: 5,
-            src: img4,
-            alt: "Front entrance detail of Mediterranean style home"
-        },
-        {
-            id: 6,
-            src: img5,
-            alt: "Front entrance detail of Mediterranean style home"
-        }
+        { id: 1, src: imgcoursel, alt: "Luxury villa with Mediterranean architecture featuring white facade and ornate balconies" },
+        { id: 2, src: img1, alt: "Night view of residential villas with lights" },
+        { id: 3, src: img2, alt: "Row of upscale residential townhouses" },
+        { id: 4, src: img3, alt: "Side view of residential development" },
+        { id: 5, src: img4, alt: "Front entrance detail of Mediterranean style home" },
+        { id: 6, src: img5, alt: "Front entrance detail of Mediterranean style home" }
     ];
 
-    // Animation controls for different sections
     const headerControls = useAnimation();
     const contentControls = useAnimation();
     const imageControls = useAnimation();
     const testimonialControls = useAnimation();
     const contactControls = useAnimation();
 
-    // Intersection observers for different sections
     const [headerRef, headerInView] = useInView({ threshold: 0.1, triggerOnce: true });
     const [contentRef, contentInView] = useInView({ threshold: 0.1, triggerOnce: true });
     const [imageRef, imageInView] = useInView({ threshold: 0.1, triggerOnce: true });
     const [testimonialRef, testimonialInView] = useInView({ threshold: 0.1, triggerOnce: true });
     const [contactRef, contactInView] = useInView({ threshold: 0.1, triggerOnce: true });
 
-    // Trigger animations when sections come into view
     useEffect(() => {
         if (headerInView) {
             headerControls.start({
@@ -108,14 +86,11 @@ const Malbargold = () => {
         }
     }, [contactInView, contactControls]);
 
-    // Variants for staggered animations
     const contentVariants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: {
-                staggerChildren: 0.25
-            }
+            transition: { staggerChildren: 0.25 }
         }
     };
 
@@ -143,6 +118,7 @@ const Malbargold = () => {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6 }}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                         Malbar Gold
                     </motion.h2>
@@ -153,17 +129,11 @@ const Malbargold = () => {
                         initial="hidden"
                         animate={contentControls}
                     >
-                        <motion.p
-                            className="text-gray-700 mb-2 ml-14"
-                            variants={itemVariants}
-                        >
+                        <motion.p className="text-gray-700 mb-2 ml-14" variants={itemVariants}>
                             <strong>Address :</strong> Survey No. 496, Gangotri Circle, to, Police Station Road, near Balmukund Bungalows, beside Lilivadi Restaurant, Nikol, Ahmedabad, Gujarat 382350
                         </motion.p>
 
-                        <motion.p
-                            className="text-gray-700 mb-4 ml-14"
-                            variants={itemVariants}
-                        >
+                        <motion.p className="text-gray-700 mb-4 ml-14" variants={itemVariants}>
                             Bhoomi Malbar Gold is an unmatched Residential property located in Nikol, Ahmedabad. The project offers plenty of benefits that includes prime location, comfortable and lavish lifestyle, great amenities, healthy surroundings and high return.
                             Location Advantages : Bhoomi Malbar Gold is strategically located and provides direct connectivity to nearly all other major points in and around Ahmedabad. It is one of the most reputable address of the city with easy access to many famed schools, shopping areas, hospitals, recreational areas, public gardens and several other public amenities.
                         </motion.p>
@@ -189,25 +159,17 @@ const Malbargold = () => {
                     <ImageSlider images={images} />
                 </motion.div>
 
-                {/* Testimonials slider with animation */}
+                {/* Testimonials / Projects */}
                 <motion.div
                     className="mt-20"
                     ref={testimonialRef}
                     initial={{ opacity: 0, y: 50 }}
                     animate={testimonialControls}
                 >
-                    <motion.h2
-                        className="text-3xl font-semibold text-center text-orange-500"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                    >
-                        What Our Clients Say
-                    </motion.h2>
                     <Projectcard />
                 </motion.div>
 
-                {/* Contact form with animation */}
+                {/* Contact form */}
                 <motion.div
                     ref={contactRef}
                     initial={{ opacity: 0, y: 50 }}

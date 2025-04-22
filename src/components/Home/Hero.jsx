@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // Import Link if you're using React Router
+import { Link } from "react-router-dom";
 import img1 from "../../asset/image.webp";
-import img2 from "../../asset/royal-coursel.png"
-import img3 from "../../asset/Hills-coursel (1) (1).webp"
-import img4 from "../../asset/surya-coursel.webp"
-import img5 from "../../asset/prime-coursel.webp"
-import img6 from "../../asset/gold.webp"
+import img2 from "../../asset/royal-coursel.png";
+import img3 from "../../asset/Hills-coursel (1) (1).webp";
+import img4 from "../../asset/surya-coursel.webp";
+import img5 from "../../asset/prime-coursel.webp";
+import img6 from "../../asset/gold.webp";
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,27 +17,24 @@ const Hero = () => {
             alt: "Malbar Prime Building",
             title: "MALBAR PRIME",
             description: "A modern shopping destination with premium brands and amenities.",
-            link: "/malbar-prime" // Add a link property for each slide
+            link: "/malbar-prime"
         },
         {
             src: img2,
             alt: "Malbar Prime Interior",
             title: "MALBAR ROYAL",
-            // description: "Explore our spacious interior with a variety of shopping options.",
             link: "/Malbar-royal"
         },
         {
             src: img6,
             alt: "Malbar Prime Cafe",
             title: "MALBAR GOLD",
-            // description: "Enjoy our rooftop cafe with panoramic views of the city.",
             link: "/Malbar-gold"
         },
         {
             src: img3,
             alt: "Malbar Prime Cafe",
             title: "MALBAR HILLS",
-            // description: "Enjoy our rooftop cafe with panoramic views of the city.",
             link: "/Malbar-hills"
         },
         {
@@ -83,12 +80,12 @@ const Hero = () => {
     }, [isAutoPlaying, currentIndex]);
 
     return (
-        <div className="relative w-full h-full overflow-hidden rounded-lg">
-            <div className="relative h-[800px] w-full ">
+        <div className="relative w-full overflow-hidden rounded-lg">
+            <div className="relative w-full h-[500px] md:h-[600px] lg:h-[800px]">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className={`absolute top-3 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
+                        className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${index === currentIndex ? "opacity-100" : "opacity-0 pointer-events-none"
                             }`}
                     >
                         <img
@@ -97,14 +94,13 @@ const Hero = () => {
                             className="object-cover w-full h-full"
                         />
 
-                        <div className="absolute bottom-0 right-0 p-8 text-left bg-white bg-opacity-110 w-[800px] rounded-2xl h-[12rem]">
-                            <h2 className="text-5xl font-bold text-black mb-4 mt-3">{image.title}</h2>
+                        <div className="absolute bottom-0 right-0 p-4 md:p-6 lg:p-8 text-left bg-white bg-opacity-110 w-full md:w-3/4 lg:w-[800px] rounded-tl-2xl h-auto md:h-[10rem] lg:h-[12rem]">
+                            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-2 md:mb-4 mt-1 md:mt-3">
+                                {image.title}
+                            </h2>
 
-                            {/* Using React Router Link */}
                             <Link to={image.link}>
-                                <button
-                                    className="bg-[#ff6e00] text-white px-6 py-3 rounded font-medium border-none cursor-pointer transition-colors duration-300 hover:bg-[#e06200]"
-                                >
+                                <button className="bg-[#ff6e00] text-white px-3 py-2 md:px-6 md:py-3 rounded font-medium border-none cursor-pointer transition-colors duration-300 hover:bg-[#e06200]">
                                     Explore more
                                 </button>
                             </Link>
@@ -114,18 +110,19 @@ const Hero = () => {
 
                 <button
                     onClick={goToPrevious}
-                    className="absolute top-1/2 left-4 -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
+                    className="absolute top-1/2 left-2 md:left-4 -translate-y-1/2 bg-white bg-opacity-80 p-1 md:p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
                     aria-label="Previous slide"
                 >
                     <svg
-                        width="24"
-                        height="24"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className="md:w-6 md:h-6"
                     >
                         <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
@@ -133,31 +130,32 @@ const Hero = () => {
 
                 <button
                     onClick={goToNext}
-                    className="absolute top-1/2 right-4 -translate-y-1/2 bg-white bg-opacity-80 p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
+                    className="absolute top-1/2 right-2 md:right-4 -translate-y-1/2 bg-white bg-opacity-80 p-1 md:p-2 rounded-full border-none cursor-pointer flex items-center justify-center transition-colors duration-300 hover:bg-opacity-100"
                     aria-label="Next slide"
                 >
                     <svg
-                        width="24"
-                        height="24"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className="md:w-6 md:h-6"
                     >
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
 
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 md:gap-2">
                     {images.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
-                            className={`w-3 h-3 rounded-full border-none cursor-pointer transition-colors duration-300 ${index === currentIndex
-                                ? "bg-[#ff6e00]"
-                                : "bg-white bg-opacity-60 hover:bg-opacity-100"
+                            className={`w-2 h-2 md:w-3 md:h-3 rounded-full border-none cursor-pointer transition-colors duration-300 ${index === currentIndex
+                                    ? "bg-[#ff6e00]"
+                                    : "bg-white bg-opacity-60 hover:bg-opacity-100"
                                 }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />

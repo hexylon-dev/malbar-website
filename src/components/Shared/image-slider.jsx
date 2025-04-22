@@ -134,11 +134,6 @@ export default function ImageSlider({ images }) {
                     ))}
                 </div>
             </div>
-
-            {/* Current Slide Indicator */}
-            <div className="absolute top-4 right-6 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full">
-                <span className="font-medium">{currentIndex + 1}</span> / {images.length}
-            </div>
         </div>
     );
 }

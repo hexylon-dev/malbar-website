@@ -76,7 +76,8 @@ export default function Contact() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5 }}
             >
-                <h1 className="text-2xl font-bold text-orange-500">Contact Us</h1>
+                <h1 className="text-2xl font-bold text-orange-500"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}>Contact Us</h1>
                 <p className="text-sm text-gray-600 mt-1">Any question or remarks? Just write us a message!</p>
             </motion.div>
 
@@ -103,21 +104,21 @@ export default function Contact() {
                             <div className="w-6 mr-4">
                                 <Phone className="w-5 h-5" />
                             </div>
-                            <span>+123-456-789</span>
+                            <span>55555</span>
                         </motion.div>
 
                         <motion.div className="flex items-center" variants={itemVariants}>
                             <div className="w-6 mr-4">
                                 <Mail className="w-5 h-5" />
                             </div>
-                            <span>demo@gmail.com</span>
+                            <span>555@gmail.com</span>
                         </motion.div>
 
                         <motion.div className="flex items-center" variants={itemVariants}>
                             <div className="w-6 mr-4">
                                 <MapPin className="w-5 h-5" />
                             </div>
-                            <span>3671 Roosevelt, Richmond, California</span>
+                            {/* <span>3671 Roosevelt, Richmond, California</span> */}
                         </motion.div>
                     </motion.div>
 

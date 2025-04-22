@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ContactForm from '../Shared/form';
 import ImageSlider from '../Shared/image-slider';
@@ -62,6 +62,10 @@ const slideInFromRight = {
 };
 
 const Malbarprime = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const clients = [
         { name: 'ZARA', logo: '/logos/zara.png' },
         { name: 'ZARA', logo: '/logos/zara.png' },
@@ -112,12 +116,13 @@ const Malbarprime = () => {
                     className="mb-16 lg:px-32"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ margin: "-100px" }}
                     variants={containerVariants}
                 >
                     <motion.h2
                         className="text-3xl font-bold mb-4 ml-12"
                         variants={slideInFromLeft}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                         Malbar Prime
                     </motion.h2>
@@ -164,6 +169,7 @@ const Malbarprime = () => {
                 >
                     <motion.h2
                         className="text-3xl font-bold mb-2"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                         variants={slideInFromRight}
                     >
                         Our clients
@@ -186,7 +192,7 @@ const Malbarprime = () => {
                                 whileHover={{ scale: 1.1, boxShadow: "0px 5px 15px rgba(0,0,0,0.1)" }}
                             >
                                 <img
-                                    src={client.logo}
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0xrNZ2-JzPynIh79ud05VHkWN8d_ZhaiIXA&s"
                                     alt={client.name}
                                     className="h-10 object-contain"
                                 />
@@ -200,15 +206,15 @@ const Malbarprime = () => {
                     className="mt-20"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
+                    viewport={{ margin: "-100px" }}
                     variants={fadeIn}
                 >
-                    <motion.h2
-                        className="text-3xl font-semibold text-center text-orange-500"
-                        variants={itemVariants}
-                    >
-                        What Our Clients Say
-                    </motion.h2>
+                    {/* <motion.h2
+                            className="text-3xl font-semibold text-center text-orange-500"
+                            variants={itemVariants}
+                        >
+                            What Our Clients Say
+                        </motion.h2> */}
                     <TestimonialSlider />
                 </motion.div>
 

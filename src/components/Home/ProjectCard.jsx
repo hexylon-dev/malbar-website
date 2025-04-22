@@ -1,171 +1,176 @@
-import React, { useState, useEffect } from 'react';
-import img1 from "../../asset/cartoon.png";
+"use client"
+
+import { useState, useEffect } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Projectcard = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [isAnimating, setIsAnimating] = useState(false);
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [isMobile, setIsMobile] = useState(false)
 
     const testimonials = [
         {
             id: 1,
             name: "John Smith",
             title: "Marketing Director",
-            image: img1,
-            text: "Working with this team transformed our online presence. Their attention to detail and commitment to excellence truly sets them apart from other agencies we've partnered with."
+            image: "/placeholder.svg?height=80&width=80",
+            text: "Working with this team transformed our online presence. Their attention to detail and commitment to excellence truly sets them apart.",
         },
         {
             id: 2,
             name: "Sarah Johnson",
             title: "Product Manager",
-            image: img1,
-            text: "The level of creativity and technical expertise demonstrated by this team exceeded our expectations. Our project was delivered on time and the results have been outstanding."
+            image: "/placeholder.svg?height=80&width=80",
+            text: "The level of creativity and technical expertise demonstrated by this team exceeded our expectations. Delivered on time, with outstanding results.",
         },
         {
             id: 3,
             name: "Michael Chen",
             title: "CEO, TechSolutions",
-            image: img1,
-            text: "I've worked with many development teams over the years, but none have matched the professionalism and quality of work that this team consistently delivers."
+            image: "/placeholder.svg?height=80&width=80",
+            text: "I've worked with many dev teams, but none matched the professionalism and quality of work this team consistently delivers.",
         },
         {
             id: 4,
             name: "Emily Rodriguez",
             title: "Design Lead",
-            image: img1,
-            text: "Their collaborative approach made the entire process smooth and enjoyable. They truly understand how to bring a vision to life while adding their own expertise."
+            image: "/placeholder.svg?height=80&width=80",
+            text: "Their collaborative approach made the entire process smooth. They truly understand how to bring a vision to life.",
         },
         {
             id: 5,
             name: "David Kim",
             title: "Operations Manager",
-            image: img1,
-            text: "From initial concept to final delivery, the team demonstrated exceptional skill and dedication. I wouldn't hesitate to recommend them to anyone seeking top-tier service."
-        }
-    ];
+            image: "/placeholder.svg?height=80&width=80",
+            text: "From concept to delivery, the team demonstrated exceptional skill and dedication. Highly recommended.",
+        },
+    ]
 
     const getWrappedIndex = (index) => {
-        const totalItems = testimonials.length;
-        return ((index % totalItems) + totalItems) % totalItems;
-    };
+        const total = testimonials.length
+        return ((index % total) + total) % total
+    }
 
-    // Display 3 cards at once
     const getVisibleTestimonials = () => {
-        return [
-            testimonials[getWrappedIndex(activeIndex)],
-            testimonials[getWrappedIndex(activeIndex + 1)],
-            testimonials[getWrappedIndex(activeIndex + 2)]
-        ];
-    };
+        if (isMobile) {
+            return [testimonials[getWrappedIndex(activeIndex)]]
+        } else {
+            return [
+                testimonials[getWrappedIndex(activeIndex)],
+                testimonials[getWrappedIndex(activeIndex + 1)],
+                testimonials[getWrappedIndex(activeIndex + 2)],
+            ]
+        }
+    }
 
-    // Auto-rotate testimonials
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768)
+        handleResize()
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+
     useEffect(() => {
         const interval = setInterval(() => {
-            handleNext();
-        }, 5000);
-
-        return () => clearInterval(interval);
-    }, [activeIndex]);
+            handleNext()
+        }, 5000)
+        return () => clearInterval(interval)
+    }, [activeIndex])
 
     const handlePrev = () => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        setActiveIndex(prev => getWrappedIndex(prev - 1));
-        setTimeout(() => setIsAnimating(false), 500);
-    };
+        setActiveIndex((prev) => getWrappedIndex(prev - 1))
+    }
 
     const handleNext = () => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        setActiveIndex(prev => getWrappedIndex(prev + 1));
-        setTimeout(() => setIsAnimating(false), 500);
-    };
+        setActiveIndex((prev) => getWrappedIndex(prev + 1))
+    }
 
     const handleDotClick = (index) => {
-        if (isAnimating) return;
-        setIsAnimating(true);
-        setActiveIndex(index);
-        setTimeout(() => setIsAnimating(false), 500);
-    };
+        setActiveIndex(index)
+    }
 
-    const visibleTestimonials = getVisibleTestimonials();
+    const visibleTestimonials = getVisibleTestimonials()
 
     return (
-        <div className="w-full bg-gray-50 py-16 px-4">
+        <div className="w-full py-16 px-4 bg-gray-50">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl font-bold mb-4">
-                        What Our <span className="text-orange-500">Clients</span> Say
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                        What Our <span className="text-orange-600">Clients</span> Say
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
-                        Don't just take our word for it. Hear what our clients have to say about their experience working with our team.
+                        Don't just take our word for it. Hear what our clients have to say about their experience working with our
+                        team.
                     </p>
                 </div>
 
                 <div className="relative">
-                    {/* Navigation arrows */}
+                    {/* Navigation */}
                     <button
                         onClick={handlePrev}
-                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white rounded-full shadow-lg p-3 z-10 text-orange-500 hover:bg-orange-50 transition-all"
-                        aria-label="Previous testimonial"
+                        className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-6 bg-white rounded-full shadow-md p-2 z-10 text-orange-600 hover:bg-orange-50 transition"
+                        aria-label="Previous"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
+                        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6" />
                     </button>
 
                     <button
                         onClick={handleNext}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white rounded-full shadow-lg p-3 z-10 text-orange-500 hover:bg-orange-50 transition-all"
-                        aria-label="Next testimonial"
+                        className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-6 bg-white rounded-full shadow-md p-2 z-10 text-orange-600 hover:bg-orange-50 transition"
+                        aria-label="Next"
                     >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
+                        <ChevronRight className="h-5 w-5 md:h-6 md:w-6" />
                     </button>
 
-                    {/* Testimonials Cards */}
-                    <div className={`flex justify-between items-stretch gap-6 transition-all duration-500 ${isAnimating ? 'opacity-50' : 'opacity-100'}`}>
-                        {visibleTestimonials.map((item, index) => (
-                            <div
-                                key={`${item.id}-${index}`}
-                                className={`w-1/3 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-500 ${isAnimating ? 'transform scale-95' : 'transform scale-100'
-                                    }`}
+                    {/* Testimonials */}
+                    <div className="overflow-hidden">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                className="flex gap-6 md:gap-8 justify-center md:justify-between"
+                                key={activeIndex}
+                                initial={{ opacity: 0, x: 100 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -100 }}
+                                transition={{ duration: 0.5 }}
                             >
-                                <div className="h-2 bg-orange-200"></div>
-                                <div className="p-6">
-                                    {/* Quote icon */}
-                                    <div className="flex justify-end mb-4">
-                                        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M11.55 26.25C13.65 26.25 15.4 27.09 16.8 28.77C18.2 30.45 18.9 32.34 18.9 34.44C18.9 36.82 18.06 38.85 16.38 40.53C14.7 42.21 12.67 43.05 10.29 43.05C7.35 43.05 5.04 41.79 3.36 39.27C1.68 36.75 0.84 33.18 0.84 28.56C0.84 24.78 1.54 21.21 2.94 17.85C4.34 14.49 6.16 11.76 8.4 9.66C10.64 7.56 13.02 6.09 15.54 5.25L18.9 11.34C16.38 12.46 14.28 14.28 12.6 16.8C10.92 19.32 10.08 22.05 10.08 24.99C10.22 25.13 10.57 25.41 11.13 25.83C11.69 26.11 11.97 26.25 11.55 26.25ZM32.55 26.25C34.65 26.25 36.4 27.09 37.8 28.77C39.2 30.45 39.9 32.34 39.9 34.44C39.9 36.82 39.06 38.85 37.38 40.53C35.7 42.21 33.67 43.05 31.29 43.05C28.35 43.05 26.04 41.79 24.36 39.27C22.68 36.75 21.84 33.18 21.84 28.56C21.84 24.78 22.54 21.21 23.94 17.85C25.34 14.49 27.16 11.76 29.4 9.66C31.64 7.56 34.02 6.09 36.54 5.25L39.9 11.34C37.38 12.46 35.28 14.28 33.6 16.8C31.92 19.32 31.08 22.05 31.08 24.99C31.22 25.13 31.57 25.41 32.13 25.83C32.69 26.11 32.97 26.25 32.55 26.25Z" fill="#FFE1CC" />
-                                        </svg>
-                                    </div>
-
-                                    {/* Testimonial text */}
-                                    <p className="text-gray-700 mb-6 min-h-16">{item.text}</p>
-
-                                    <div className="flex items-center mt-6 pt-6 border-t border-gray-100">
-                                        <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-orange-100">
-                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                                {visibleTestimonials.map((item, index) => (
+                                    <motion.div
+                                        key={`${item.id}-${index}`}
+                                        className="w-full md:w-1/3 bg-white rounded-xl shadow-sm hover:shadow-md transition p-6 md:p-8"
+                                        style={{
+                                            minWidth: isMobile ? "100%" : "calc(33.333% - 1.5rem)",
+                                        }}
+                                        whileHover={{ scale: 1.03 }}
+                                    >
+                                        <p className="text-gray-700 mb-6 text-base leading-relaxed">{item.text}</p>
+                                        <div className="flex items-center mt-6 pt-6 border-t border-gray-100">
+                                            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-100">
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            <div className="ml-4">
+                                                <h3 className="font-bold text-gray-900">{item.name}</h3>
+                                                <p className="text-orange-600 text-sm">{item.title}</p>
+                                            </div>
                                         </div>
-                                        <div className="ml-4">
-                                            <h3 className="font-bold text-lg">{item.name}</h3>
-                                            <p className="text-orange-500">{item.title}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                                    </motion.div>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
 
-                    {/* Navigation dots */}
-                    <div className="flex justify-center mt-10">
+                    {/* Dots */}
+                    <div className="flex justify-center mt-8">
                         {testimonials.map((_, index) => (
                             <button
                                 key={index}
                                 onClick={() => handleDotClick(index)}
-                                className={`w-3 h-3 mx-1 rounded-full transition-all duration-300 ${index === activeIndex
-                                    ? 'bg-orange-500 w-6'
-                                    : 'bg-gray-300 hover:bg-orange-300'
+                                className={`mx-1 transition-all duration-300 focus:outline-none ${index === activeIndex
+                                        ? "w-6 h-2 bg-orange-600 rounded-full"
+                                        : "w-2 h-2 bg-gray-300 hover:bg-orange-300 rounded-full"
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
@@ -174,7 +179,7 @@ const Projectcard = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Projectcard;
+export default Projectcard

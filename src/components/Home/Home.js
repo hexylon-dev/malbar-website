@@ -14,7 +14,7 @@ const Home = () => {
             </section>
 
             {/* About Section */}
-            <section className="w-full py-16 bg-gray-50">
+            <section className="w-full py-16">
                 <About />
             </section>
 

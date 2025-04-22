@@ -14,10 +14,21 @@ export default function Services() {
     const headerRef = useRef(null);
     const projectsHeaderRef = useRef(null);
     const projectsContainerRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
     const isProjectsHeaderInView = useInView(projectsHeaderRef, { once: true, amount: 0.3 });
     const isProjectsContainerInView = useInView(projectsContainerRef, { once: true, amount: 0.1 });
+
+    // Check for mobile devices
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         if (isHeaderInView) {
@@ -125,22 +136,21 @@ export default function Services() {
             </motion.div>
 
             {/* Container for the rest of the content */}
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto px-4 md:px-0">
                 {/* Header Section with scroll trigger */}
                 <motion.div
                     ref={headerRef}
-                    className="mb-9 max-w-2xl mt-20 ml-28"
+                    className="mb-9 max-w-2xl mt-10 md:mt-20 mx-auto md:ml-28"
                     variants={fadeInUp}
                     initial="hidden"
                     animate={isHeaderInView ? "visible" : "hidden"}
                 >
-                    <p className="text-gray-600 mb-5">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />
+                    <p className="text-gray-600 mb-5 text-center md:text-left">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br className="hidden md:block" />
                         It has been the industry's standard dummy text ever since the 1500s.
                     </p>
-                    <p className="text-gray-600 mb-4">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br />
-                        {/* It has been the industry's standard dummy text ever since the 1500s. */}
+                    <p className="text-gray-600 mb-4 text-center md:text-left">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br className="hidden md:block" />
                     </p>
                 </motion.div>
 
@@ -153,8 +163,9 @@ export default function Services() {
                     animate={isProjectsHeaderInView ? "visible" : "hidden"}
                 >
                     <motion.h1
-                        className="text-[40px] font-bold mb-4 mt-10"
+                        className="text-3xl md:text-[40px] font-bold mb-4 mt-10"
                         initial={{ opacity: 0, scale: 0.9 }}
+                        style={{ fontFamily: 'Poppins, sans-serif' }}
                         animate={isProjectsHeaderInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.5 }}
                     >
@@ -165,7 +176,7 @@ export default function Services() {
                 {/* Projects Grid with scroll-triggered animations for each item */}
                 <motion.div
                     ref={projectsContainerRef}
-                    className="grid grid-cols-1 gap-8 max-w-[70rem] mx-auto"
+                    className="grid grid-cols-1 gap-6 md:gap-8 max-w-[70rem] mx-auto"
                     variants={staggerContainer}
                     initial="hidden"
                     animate={isProjectsContainerInView ? "visible" : "hidden"}
@@ -175,8 +186,8 @@ export default function Services() {
                             key={project.id}
                             variants={projectItem}
                             custom={index}
-                            className="relative overflow-hidden rounded-lg group cursor-pointer h-[55vh]"
-                            whileHover="hover"
+                            className="relative overflow-hidden rounded-lg group cursor-pointer h-[40vh] md:h-[55vh]"
+                            whileHover={!isMobile ? "hover" : "rest"}
                             initial="rest"
                         >
                             {/* Image with hover effect */}
@@ -191,18 +202,18 @@ export default function Services() {
                                 transition={{ duration: 0.5 }}
                             />
 
-                            {/* Overlay that appears on hover */}
+                            {/* Overlay - Always visible on mobile, hover on desktop */}
                             <motion.div
-                                className="absolute inset-0 bg-black/30 flex flex-col justify-end p-6"
+                                className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 md:p-6"
                                 variants={{
-                                    rest: { opacity: 0 },
+                                    rest: isMobile ? { opacity: 1 } : { opacity: 0 },
                                     hover: { opacity: 1 }
                                 }}
                                 transition={{ duration: 0.3 }}
                             >
                                 <motion.div
                                     variants={{
-                                        rest: { y: 50, opacity: 0 },
+                                        rest: isMobile ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 },
                                         hover: { y: 0, opacity: 1 }
                                     }}
                                     transition={{
@@ -210,12 +221,13 @@ export default function Services() {
                                         delay: 0.1
                                     }}
                                 >
-                                    <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                                    <p className="text-white/90 mb-4 line-clamp-2">{project.description}</p>
-                                    <div className="flex space-x-3">
+                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2"
+                                        style={{ fontFamily: 'Poppins, sans-serif' }}>{project.name}</h3>
+                                    <p className="text-white/90 mb-2 md:mb-4 line-clamp-2 text-sm md:text-base">{project.description}</p>
+                                    <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-3">
                                         <motion.button
                                             onClick={() => handleViewMore(project.path)}
-                                            className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-medium py-2 px-4 rounded"
+                                            className="bg-orange-500 hover:bg-orange-600 text-white text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
@@ -223,7 +235,7 @@ export default function Services() {
                                         </motion.button>
                                         <motion.button
                                             onClick={() => handleViewMore(project.path)}
-                                            className="bg-transparent border border-white text-white text-sm font-medium py-2 px-4 rounded hover:bg-white/10"
+                                            className="bg-transparent border border-white text-white text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded hover:bg-white/10"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >

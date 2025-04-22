@@ -28,7 +28,8 @@ h6 {
   font-family: 'TrajanPro', serif;
 }
 
-p {
+p,
+body {
   font-family: 'Poppins', sans-serif;
 }
 

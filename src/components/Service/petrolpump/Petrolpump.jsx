@@ -87,6 +87,7 @@ export default function AchievementsCard() {
                     className="text-[40px] md:text-4xl font-bold text-center tracking-wider mb-16 mt-20"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     viewport={{ once: true }}
                 >

@@ -150,7 +150,7 @@ function PortfolioPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen">
             {/* Hero Section with enhanced animation */}
             <motion.div
                 initial="initial"
@@ -184,7 +184,8 @@ function PortfolioPage() {
                     viewport={{ once: false, amount: 0.3 }}
                     className="text-left"
                 >
-                    <h2 className="text-[40px] font-bold text-gray-900 mb-6">About Malbar</h2>
+                    <h2 className="text-[50px] font-bold text-gray-900 mb-6"
+                        style={{ fontFamily: 'Poppins, sans-serif' }}>About Malbar</h2>
                     <p className="text-lg text-gray-600 max-w-3xl">
                         Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's
                         standard dummy text ever since the 1500s.
@@ -208,7 +209,8 @@ function PortfolioPage() {
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.6 }}
                             viewport={{ once: false }}
-                            style={{ fontSize: "40px" }}
+                            style={{ fontSize: "50px", fontFamily: 'Poppins, sans-serif' }}
+
                             className="text-3xl text-gray-900 font-bold"
                         >
                             Our Story
@@ -240,6 +242,7 @@ function PortfolioPage() {
                                 <motion.h4
                                     variants={textItemVariants}
                                     className="text-2xl font-semibold text-gray-900"
+                                    style={{ fontFamily: 'Poppins, sans-serif' }}
                                 >
                                     {section.title}
                                 </motion.h4>
@@ -270,27 +273,6 @@ function PortfolioPage() {
                     ))}
                 </div>
             </div>
-
-            {/* Parallax transition to contact section */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: false }}
-                className="relative h-64 w-full overflow-hidden"
-            >
-                <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-gray-100"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.h3
-                        initial={{ y: 30, opacity: 0 }}
-                        whileInView={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-3xl font-bold text-gray-900"
-                    >
-                        Get In Touch With Us
-                    </motion.h3>
-                </div>
-            </motion.div>
 
             <Contact />
         </div>
