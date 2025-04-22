@@ -269,10 +269,11 @@ function PortfolioPage() {
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: false, amount: 0.3 }}
-                className="text-center font-semibold text-gray-600 "
+                className="text-center font-semibold text-gray-600 max-w-3xl mx-auto px-4 md:px-0 text-base md:text-lg"
             >
                 Together the combined vision of Rameshbhai Dalwadi and Nrupansh Rameshbhai Dalwadi bridges tradition with innovation, continuing to build spaces that stand strong and inspire pride.
             </motion.div>
+
             <Contact />
 
         </div>
