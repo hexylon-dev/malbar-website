@@ -73,7 +73,8 @@ export default function Services() {
             name: 'Malbar Prime',
             description: 'A Thoughtful Blend of Living and Working',
             image: img5,
-            path: '/Malbar-Prime'
+            path: '/Malbar-Prime',
+            ongoing: true
         },
     ]);
 
@@ -207,37 +208,75 @@ export default function Services() {
 
                             {/* Overlay - Always visible on mobile, hover on desktop */}
                             <motion.div
-                                className="absolute inset-0 bg-black/30 flex flex-col justify-end p-4 md:p-6"
+                                className={`absolute inset-0 bg-black/30 flex flex-col ${project.ongoing ? 'justify-center items-center' : 'justify-end'} p-4 md:p-6`}
                                 variants={{
                                     rest: isMobile ? { opacity: 1 } : { opacity: 0 },
                                     hover: { opacity: 1 }
                                 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <motion.div
-                                    variants={{
-                                        rest: isMobile ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 },
-                                        hover: { y: 0, opacity: 1 }
-                                    }}
-                                    transition={{
-                                        duration: 0.3,
-                                        delay: 0.1
-                                    }}
-                                >
-                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2"
-                                        style={{ fontFamily: 'Poppins, sans-serif' }}>{project.name}</h3>
-                                    <p className="text-white/90 mb-2 md:mb-4 line-clamp-2 text-sm md:text-base">{project.description}</p>
-                                    <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-3">
+                                {project.ongoing ? (
+                                    // Special layout for Malbar Prime (ongoing)
+                                    <motion.div
+                                        className="text-center"
+                                        variants={{
+                                            rest: isMobile ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 },
+                                            hover: { y: 0, opacity: 1 }
+                                        }}
+                                        transition={{
+                                            duration: 0.3,
+                                            delay: 0.1
+                                        }}
+                                    >
                                         <motion.button
-                                            onClick={() => handleViewMore(project.path)}
-                                            className=" text-white bg-orange-500 hover:bg-orange-600 text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded "
+                                            onClick={() => handleViewMore('/malbar-prime')} // Replace '/ongoing' with your actual path
+                                            className="text-white font-bold py-2 px-6 rounded-full mb-4 text-5xl md:text-3xl bg-transparent"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            View Gallery
+                                            ONGOING
                                         </motion.button>
-                                    </div>
-                                </motion.div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2"
+                                            style={{ fontFamily: 'Poppins, sans-serif' }}>{project.name}</h3>
+                                        <p className="text-white/90 mb-2 md:mb-4 line-clamp-2 text-sm md:text-base">{project.description}</p>
+                                        <div className="flex justify-center mt-2">
+                                            <motion.button
+                                                onClick={() => handleViewMore(project.path)}
+                                                className="text-white bg-orange-500 hover:bg-orange-600 text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                View Gallery
+                                            </motion.button>
+                                        </div>
+                                    </motion.div>
+                                ) : (
+                                    // Original layout for other projects
+                                    <motion.div
+                                        variants={{
+                                            rest: isMobile ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 },
+                                            hover: { y: 0, opacity: 1 }
+                                        }}
+                                        transition={{
+                                            duration: 0.3,
+                                            delay: 0.1
+                                        }}
+                                    >
+                                        <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2"
+                                            style={{ fontFamily: 'Poppins, sans-serif' }}>{project.name}</h3>
+                                        <p className="text-white/90 mb-2 md:mb-4 line-clamp-2 text-sm md:text-base">{project.description}</p>
+                                        <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-3">
+                                            <motion.button
+                                                onClick={() => handleViewMore(project.path)}
+                                                className="text-white bg-orange-500 hover:bg-orange-600 text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded"
+                                                whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                            >
+                                                View Gallery
+                                            </motion.button>
+                                        </div>
+                                    </motion.div>
+                                )}
                             </motion.div>
                         </motion.div>
                     ))}

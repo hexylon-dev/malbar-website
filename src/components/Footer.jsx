@@ -28,13 +28,13 @@ export default function Footer() {
                             <h3 className="text-orange-500 font-medium mb-4">Service</h3>
                             <ul className="space-y-2">
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/Petrolpump">Petroleum</Link>
+                                    <a href="/petrolpump">Petroleum</a>
                                 </li>
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/BricksShowcase">Bricks</Link>
+                                    <a href="/BricksShowcase">Bricks</a>
                                 </li>
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/services">Service</Link>
+                                    <a href="/services">Service</a>
                                 </li>
                             </ul>
                         </div>
