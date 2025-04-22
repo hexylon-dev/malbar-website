@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronDown, ChevronRight, Menu, X } from "lucide-react"
 // import logo from "../asset/Group 1000001769 1.png"
@@ -11,6 +11,12 @@ const Header = () => {
     const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
     const [openSubCategory, setOpenSubCategory] = useState(null)
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const [currentPath, setCurrentPath] = useState("")
+
+    // Get current path for active page highlighting
+    useEffect(() => {
+        setCurrentPath(window.location.pathname)
+    }, [])
 
     const dropdownVariants = {
         hidden: { opacity: 0, y: -10, scale: 0.95 },
@@ -112,6 +118,17 @@ const Header = () => {
         setMobileProjectCategory(mobileProjectCategory === category ? null : category)
     }
 
+    // Helper function to check if a path is active
+    const isActive = (path) => {
+        return currentPath === path
+    }
+
+    // Helper function to check if any subitem of a category is active
+    const isCategoryActive = (category) => {
+        if (isActive(category.path)) return true
+        return category.subItems && category.subItems.some(subItem => isActive(subItem.path))
+    }
+
     return (
         <div className="w-full flex items-center justify-between px-4 md:px-8 py-4 relative max-w-7xl mx-auto">
             {/* Logo */}
@@ -125,7 +142,10 @@ const Header = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex bg-gray-100 rounded-full px-8 py-3 items-center space-x-10 relative">
-                <a href="/about" className="text-gray-600 hover:text-black transition-colors duration-200 font-medium">
+                <a
+                    href="/about"
+                    className={`${isActive('/about') ? 'text-orange-500' : 'text-gray-600 hover:text-black'} transition-colors duration-200 font-medium`}
+                >
                     Our Story
                 </a>
 
@@ -136,13 +156,13 @@ const Header = () => {
                     onMouseLeave={() => setWorkDropdownOpen(false)}
                 >
                     <div className="flex items-center group">
-                        <span className="text-gray-600 group-hover:text-black transition-colors duration-200 font-medium">
+                        <span className={`${workCategories.some(item => isActive(item.path)) ? 'text-orange-500' : 'text-gray-600 group-hover:text-black'} transition-colors duration-200 font-medium`}>
                             Our Works
                         </span>
                         <motion.div
                             animate={{ rotate: workDropdownOpen ? 180 : 0 }}
                             transition={{ duration: 0.2 }}
-                            className="ml-1 text-gray-500 group-hover:text-black"
+                            className={`ml-1 ${workCategories.some(item => isActive(item.path)) ? 'text-orange-500' : 'text-gray-500 group-hover:text-black'}`}
                         >
                             <ChevronDown size={16} />
                         </motion.div>
@@ -161,8 +181,7 @@ const Header = () => {
                                     <motion.div key={item.title} variants={itemVariants} className="group">
                                         <a
                                             href={item.path}
-                                            className={`block px-5 py-4 text-gray-700 hover:text-orange-500 transition-colors duration-200 ${index < workCategories.length - 1 ? "border-b border-gray-100" : ""
-                                                }`}
+                                            className={`block px-5 py-4 ${isActive(item.path) ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'} transition-colors duration-200 ${index < workCategories.length - 1 ? "border-b border-gray-100" : ""}`}
                                         >
                                             <div className="font-medium flex items-center">
                                                 <span className="h-1.5 w-1.5 mr-2"></span>
@@ -183,13 +202,13 @@ const Header = () => {
                     onMouseLeave={() => setProjectsDropdownOpen(false)}
                 >
                     <div className="flex items-center group">
-                        <span className="text-gray-600 group-hover:text-black transition-colors duration-200 font-medium">
+                        <span className={`${projectCategories.some(item => isCategoryActive(item)) ? 'text-orange-500' : 'text-gray-600 group-hover:text-black'} transition-colors duration-200 font-medium`}>
                             Our Projects
                         </span>
                         <motion.div
                             animate={{ rotate: projectsDropdownOpen ? 180 : 0 }}
                             transition={{ duration: 0.2 }}
-                            className="ml-1 text-gray-500 group-hover:text-black"
+                            className={`ml-1 ${projectCategories.some(item => isCategoryActive(item)) ? 'text-orange-500' : 'text-gray-500 group-hover:text-black'}`}
                         >
                             <ChevronDown size={16} />
                         </motion.div>
@@ -212,7 +231,7 @@ const Header = () => {
                                             className="group"
                                         >
                                             <div
-                                                className="px-5 py-4 text-gray-700 hover:text-orange-500 transition-colors duration-200 cursor-pointer flex justify-between items-center"
+                                                className={`px-5 py-4 ${isCategoryActive(category) ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'} transition-colors duration-200 cursor-pointer flex justify-between items-center`}
                                                 onClick={() => toggleSubCategory(category.title)}
                                             >
                                                 <div className="font-medium">
@@ -238,7 +257,7 @@ const Header = () => {
                                                         <motion.div key={subItem.title} variants={itemVariants}>
                                                             <a
                                                                 href={subItem.path}
-                                                                className="block px-8 py-3 text-gray-600 hover:text-orange-500 transition-colors duration-200"
+                                                                className={`block px-8 py-3 ${isActive(subItem.path) ? 'text-orange-500' : 'text-gray-600 hover:text-orange-500'} transition-colors duration-200`}
                                                             >
                                                                 <div className="font-medium">
                                                                     {subItem.title}
@@ -260,7 +279,7 @@ const Header = () => {
             {/* Enquire Now Button - desktop */}
             <a
                 href="/contact"
-                className="hidden md:block bg-[#ff6e00] text-white px-6 py-3 rounded font-medium border-none cursor-pointer transition-colors duration-300 hover:bg-[#e06200]"
+                className={`hidden md:block ${isActive('/contact') ? 'bg-[#e06200]' : 'bg-[#ff6e00] hover:bg-[#e06200]'} text-white px-6 py-3 rounded font-medium border-none cursor-pointer transition-colors duration-300`}
             >
                 Enquire Now
             </a>
@@ -298,7 +317,10 @@ const Header = () => {
 
                         <div className="overflow-y-auto flex-1">
                             <div className="p-5 border-b border-gray-100">
-                                <a href="/about" className="block text-gray-700 font-medium hover:text-orange-500 transition-colors duration-200 py-3">
+                                <a
+                                    href="/about"
+                                    className={`block ${isActive('/about') ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'} font-medium transition-colors duration-200 py-3`}
+                                >
                                     Our Story
                                 </a>
                             </div>
@@ -306,7 +328,7 @@ const Header = () => {
                             {/* Mobile Work Dropdown */}
                             <div className="p-5 border-b border-gray-100">
                                 <div
-                                    className="flex justify-between items-center text-gray-700 font-medium hover:text-orange-500 transition-colors duration-200 py-3"
+                                    className={`flex justify-between items-center ${workCategories.some(item => isActive(item.path)) ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'} font-medium transition-colors duration-200 py-3`}
                                     onClick={toggleMobileWork}
                                 >
                                     <span>Our Works</span>
@@ -331,7 +353,7 @@ const Header = () => {
                                                 <a
                                                     key={item.title}
                                                     href={item.path}
-                                                    className="block text-gray-600 hover:text-orange-500 transition-colors duration-200 py-3 border-l-2 border-gray-200 pl-4"
+                                                    className={`block ${isActive(item.path) ? 'text-orange-500' : 'text-gray-600 hover:text-orange-500'} transition-colors duration-200 py-3 border-l-2 border-gray-200 pl-4`}
                                                 >
                                                     {item.title}
                                                 </a>
@@ -344,7 +366,7 @@ const Header = () => {
                             {/* Mobile Projects Dropdown */}
                             <div className="p-5 border-b border-gray-100">
                                 <div
-                                    className="flex justify-between items-center text-gray-700 font-medium hover:text-orange-500 transition-colors duration-200 py-3"
+                                    className={`flex justify-between items-center ${projectCategories.some(item => isCategoryActive(item)) ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'} font-medium transition-colors duration-200 py-3`}
                                     onClick={toggleMobileProjects}
                                 >
                                     <span>Our Projects</span>
@@ -368,7 +390,7 @@ const Header = () => {
                                             {projectCategories.map((category) => (
                                                 <div key={category.title} className="border-l-2 border-gray-200 pl-4">
                                                     <div
-                                                        className="flex justify-between items-center text-gray-600 hover:text-orange-500 transition-colors duration-200 py-3 cursor-pointer"
+                                                        className={`flex justify-between items-center ${isCategoryActive(category) ? 'text-orange-500' : 'text-gray-600 hover:text-orange-500'} transition-colors duration-200 py-3 cursor-pointer`}
                                                         onClick={() => toggleMobileProjectCategory(category.title)}
                                                     >
                                                         <span>{category.title}</span>
@@ -393,7 +415,7 @@ const Header = () => {
                                                                     <a
                                                                         key={subItem.title}
                                                                         href={subItem.path}
-                                                                        className="block text-gray-500 hover:text-orange-500 transition-colors duration-200 py-2"
+                                                                        className={`block ${isActive(subItem.path) ? 'text-orange-500' : 'text-gray-500 hover:text-orange-500'} transition-colors duration-200 py-2`}
                                                                     >
                                                                         {subItem.title}
                                                                     </a>
@@ -413,7 +435,7 @@ const Header = () => {
                         <div className="p-5 mt-auto">
                             <a
                                 href="/contact"
-                                className="block bg-[#ff6e00] text-white px-6 py-4 rounded font-medium border-none cursor-pointer transition-colors duration-300 hover:bg-[#e06200] text-center"
+                                className={`block ${isActive('/contact') ? 'bg-[#e06200]' : 'bg-[#ff6e00] hover:bg-[#e06200]'} text-white px-6 py-4 rounded font-medium border-none cursor-pointer transition-colors duration-300 text-center`}
                             >
                                 Inquiry Now
                             </a>
