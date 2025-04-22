@@ -184,13 +184,18 @@ function PortfolioPage() {
                     viewport={{ once: false, amount: 0.3 }}
                     className="text-left"
                 >
-                    <h2 className="text-[50px] font-bold text-gray-900 mb-6"
-                        style={{ fontFamily: 'Poppins, sans-serif' }}>About Malbar</h2>
-                    <p className="text-lg text-gray-600 max-w-3xl">
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's
-                        standard dummy text ever since the 1500s.
+                    <h2 className="text-[40px] font-bold text-gray-900 mb-6">About Malbar</h2>
+                    <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
+                        In the heart of Nikol, Ahmedabad, one name stands out when it comes to thoughtful development and real estate progress — <strong>Mr. Nrupansh Dalwadi</strong>.
+                        <br /><br />
+                        With a deep-rooted commitment to the community and a vision to uplift the area, he has played a key role in bringing quality real estate to the forefront.
+                        <br /><br />
+                        One such proud addition is <strong>Malbar</strong> — a step toward refined living, offering not just homes but a better lifestyle for families in Nikol.
+                        <br /><br />
+                        It's a vision of modern community living where quality, comfort, and connection come together.
                     </p>
                 </motion.div>
+
 
                 {/* Our Story Section */}
                 <div className="mt-24">
