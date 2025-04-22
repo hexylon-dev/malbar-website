@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ContactForm from '../Shared/form';
 import ImageSlider from '../Shared/image-slider';
 import TestimonialSlider from '../Shared/testimonials';
+import Projectcard from '../Home/ProjectCard';
 
 const Suburban = () => {
     return (
@@ -33,7 +34,7 @@ const Suburban = () => {
                 <div className="mt-20">
                     <h2 className="text-3xl font-semibold text-center text-orange-500"
                         style={{ fontFamily: 'Poppins, sans-serif' }}>What Our Clients Say</h2>
-                    <TestimonialSlider />
+                    <Projectcard />
                 </div>
                 <div>
                     <ContactForm />

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -14,6 +14,8 @@ import img5 from "../../asset/Hills-5.webp";
 import Projectcard from '../Home/ProjectCard';
 
 const Malbarhills = () => {
+    const [activeTab, setActiveTab] = useState('amenities');
+
     useEffect(() => {
         // Scroll to top when the page loads
         window.scrollTo(0, 0);
@@ -54,11 +56,13 @@ const Malbarhills = () => {
 
     const headerControls = useAnimation();
     const imageControls = useAnimation();
+    const infoCardControls = useAnimation();
     const testimonialControls = useAnimation();
     const contactControls = useAnimation();
 
     const [headerRef, headerInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [imageRef, imageInView] = useInView({ threshold: 0.2, triggerOnce: true });
+    const [infoCardRef, infoCardInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [testimonialRef, testimonialInView] = useInView({ threshold: 0.2, triggerOnce: true });
     const [contactRef, contactInView] = useInView({ threshold: 0.2, triggerOnce: true });
 
@@ -81,6 +85,16 @@ const Malbarhills = () => {
             });
         }
     }, [imageInView, imageControls]);
+
+    useEffect(() => {
+        if (infoCardInView) {
+            infoCardControls.start({
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, ease: "easeOut" }
+            });
+        }
+    }, [infoCardInView, infoCardControls]);
 
     useEffect(() => {
         if (testimonialInView) {
@@ -119,7 +133,7 @@ const Malbarhills = () => {
                         transition={{ delay: 0.2, duration: 0.6 }}
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
-                        Malabar Hills
+                        Malbar Hills – A Refreshing Escape within the City
                     </motion.h2>
 
                     <div className="px-2 sm:px-0">
@@ -129,7 +143,7 @@ const Malbarhills = () => {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.4, duration: 0.6 }}
                         >
-                            <strong>Address :</strong> Opposite Shahi Kutir, MG Road, Nikol, North East, Ahmedabad
+                            {/* <strong>Address :</strong> Opposite Shahi Kutir, MG Road, Nikol, North East, Ahmedabad */}
                         </motion.p>
                         <motion.p
                             className="text-gray-700 mb-4 sm:ml-14"
@@ -137,10 +151,10 @@ const Malbarhills = () => {
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6, duration: 0.6 }}
                         >
-                            Malabar Hills is the up and coming project in Nikol, Ahmedabad. Due to its prime location in the heart of the city, the project presents an unprecedented opportunity to become a proud owner of property in this eminent location in the city.
+                            As the first project under the Malbar name,<b> Malbar Hills</b> carried forward the vision of offering well-planned residential spaces in Nikol. This 4 BHK villa community is thoughtfully located in one of the city's growing residential areas. With just 50 villas, it offers a peaceful lifestyle with open spaces and greenery, all while keeping essential services close by. It's designed for those who appreciate calm surroundings without being far from the city's convenience.
                         </motion.p>
                     </div>
-
+                    {/* 
                     <motion.button
                         className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded mx-2 sm:ml-14"
                         whileHover={{ scale: 1.05 }}
@@ -150,7 +164,7 @@ const Malbarhills = () => {
                         transition={{ delay: 0.8, duration: 0.6 }}
                     >
                         Enquire Now
-                    </motion.button>
+                    </motion.button> */}
                 </motion.div>
 
                 {/* Image Slider */}
@@ -161,6 +175,116 @@ const Malbarhills = () => {
                     className="mb-8 sm:mb-12"
                 >
                     <ImageSlider images={images} />
+                </motion.div>
+
+                {/* Info Tab Card */}
+                <motion.div
+                    ref={infoCardRef}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={infoCardControls}
+                    className="mb-12 sm:mb-16 lg:px-32"
+                >
+                    <div className="bg-white rounded-lg overflow-hidden">
+                        {/* Tab Buttons */}
+                        <div className="flex border-b">
+                            <button
+                                className={`flex-1 py-4 px-6 text-center font-medium text-gray-700 ${activeTab === 'amenities'
+                                    ? 'border-b-2 border-orange-400'
+                                    : 'hover:bg-gray-50'
+                                    }`}
+                                onClick={() => setActiveTab('amenities')}
+                            >
+                                Key Amenities
+                            </button>
+                            <button
+                                className={`flex-1 py-4 px-6 text-center font-medium text-gray-700 ${activeTab === 'location'
+                                    ? 'border-b-2 border-orange-400'
+                                    : 'hover:bg-gray-50'
+                                    }`}
+                                onClick={() => setActiveTab('location')}
+                            >
+                                Location Details
+                            </button>
+                        </div>
+
+                        {/* Tab Content */}
+                        <div className="p-6">
+                            {activeTab === 'amenities' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <h3 className="text-xl font-semibold mb-4 text-orange-500"
+                                        style={{ fontFamily: 'Poppins, sans-serif' }}>Key Amenities</h3>
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        {[
+                                            "24x7 Water Supply",
+                                            "Covered Car Parking",
+                                            "Party Area",
+                                            "Rainwater Harvesting",
+                                            "Power Backup",
+                                            "Street Lighting",
+                                            "Gated Community",
+                                            "Vastu/Feng Shui Compliant"
+                                        ].map((amenity, index) => (
+                                            <div
+                                                key={index}
+                                                className="bg-gray-50 p-4 rounded-lg flex items-center justify-center text-center hover:bg-gray-100 transition-colors"
+                                            >
+                                                <span>{amenity}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            {activeTab === 'location' && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <h3 className="text-xl font-semibold mb-4 text-orange-500"
+                                        style={{ fontFamily: 'Poppins, sans-serif' }}>Distance from Key Locations:</h3>
+                                    <div className="space-y-3">
+                                        <div className="flex justify-between items-center  pb-2">
+                                            <span className="font-medium">Ahmedabad City Center</span>
+                                            <span>15 km</span>
+                                        </div>
+                                        <div className="flex justify-between items-center pb-2">
+                                            <span className="font-medium">Narol Naroda Road</span>
+                                            <span>5.6 km</span>
+                                        </div>
+                                        <div className="flex justify-between items-center  pb-2">
+                                            <span className="font-medium">Asarwa Railway Station</span>
+                                            <span>7.9 km via (Naroda Road)</span>
+                                        </div>
+                                        <div className="flex justify-between items-center  pb-2">
+                                            <span className="font-medium">Ahmedabad Railway Station</span>
+                                            <span>8.6 km (via Gam Road)</span>
+                                        </div>
+                                        <div className="flex justify-between items-center  pb-2">
+                                            <span className="font-medium">SVP International Airport</span>
+                                            <span>12 km</span>
+                                        </div>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold mt-6 mb-3">Nearby Localities:</h3>
+                                    <div className="flex flex-wrap gap-2">
+                                        {["Naroda", "Kathwada", "Odhav", "Asarwa"].map((locality, index) => (
+                                            <span
+                                                key={index}
+                                                className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full"
+                                            >
+                                                {locality}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </motion.div>
+                            )}
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* Project Card or Testimonials */}

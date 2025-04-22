@@ -95,7 +95,8 @@ const Projectcard = () => {
         <div className="w-full py-16 px-4 bg-gray-50">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4"
+                        style={{ fontFamily: "Poppins, sans-serif" }}>
                         What Our <span className="text-orange-600">Clients</span> Say
                     </h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">
@@ -169,8 +170,8 @@ const Projectcard = () => {
                                 key={index}
                                 onClick={() => handleDotClick(index)}
                                 className={`mx-1 transition-all duration-300 focus:outline-none ${index === activeIndex
-                                        ? "w-6 h-2 bg-orange-600 rounded-full"
-                                        : "w-2 h-2 bg-gray-300 hover:bg-orange-300 rounded-full"
+                                    ? "w-6 h-2 bg-orange-600 rounded-full"
+                                    : "w-2 h-2 bg-gray-300 hover:bg-orange-300 rounded-full"
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />

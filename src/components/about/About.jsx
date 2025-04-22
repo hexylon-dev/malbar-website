@@ -9,61 +9,49 @@ function PortfolioPage() {
     // Data for the sections
     const sections = [
         {
-            title: "What is this",
+            title: "The Malbar Story :From Bricks to Buildings",
+            descriprtion: "From Foundation to Future: Our Journey",
             content: [
-                "What makes us unique is our unwavering commitment to excellence. We're not just a travel agency, we're your trusted travel companion. Discover the reasons why travelers like you choose us for their adventures.",
-                "What makes us unique is our unwavering commitment to excellence. We're not just a travel agency, we're your trusted travel companion. Discover the reasons why travelers like you choose us for their adventures."
+                "The story begins in 1965 when Rameshbhai started a brick furnace in Nikol. His dedication, values, and steady focus laid the foundation of a business built on trust. Every brick reflected a commitment to quality.  Years later, his son Nrupansh carried the legacy forward with a broader vision  stepping into real estate to meet the city’s growing housing needs.What began as brick- making evolved into thoughtful real estate development rooted in the same values."
             ],
             image: img1,
         },
         {
-            title: "Our Approach",
+            title: "SURYAKIRAN : The Beginning of a New Chapter",
             content: [
-                "Our innovative approach sets us apart from the competition. We combine cutting-edge technology with personalized service to deliver exceptional results.",
-                "Every project is treated with the utmost care and attention to detail, ensuring complete satisfaction for our clients."
+                "SURYAKIRAN was our first villa project and marked the beginning of our journey into real estate development.Thoughtfully designed and built with quality at its core, Suryakiran set a new standard for modern living in Nikol.It reflected our vision to create homes that offer both comfort and class laying the foundation for all our future projects"
             ],
             image: img1,
         },
         {
-            title: "Our Results",
+            title: "MALBAR HILL : A Refreshing Escape within the City",
             content: [
-                "The proof is in our portfolio of successful projects and satisfied clients. We measure our success by the impact we make.",
-                "Our track record speaks for itself, with numerous awards and recognitions in our industry."
+                "   Following the success of Suryakiran, we launched Malbar Hill a premium residential project designed to bring elevated living to the heart of Nikol. With Malbar Hill, we introduced the Malbar brand, which quickly gained recognition for delivering homes that balance elegance and affordability."
+
             ],
             image: img1
         },
         {
-            title: "Our Results",
+            title: "MALBAR ROYAL : Where Comfort Meets Class",
             content: [
-                "The proof is in our portfolio of successful projects and satisfied clients. We measure our success by the impact we make.",
-                "Our track record speaks for itself, with numerous awards and recognitions in our industry."
+                "Malbar Royal, our third project in Nikol, was crafted to offer a royal touch to everyday living.With its modern design, spacious layouts, and premium features, it stood out as a perfect blend of comfort, elegance, and affordability.This project further strengthened the Malbar brand and our commitment to raising the standard of living in the area."
             ],
             image: img1
         },
         {
-            title: "Our Results",
+            title: "MALBAR GOLD : Designed for Peaceful Living ",
             content: [
-                "The proof is in our portfolio of successful projects and satisfied clients. We measure our success by the impact we make.",
-                "Our track record speaks for itself, with numerous awards and recognitions in our industry."
+                "  As our fourth project in Nikol, Malbar Gold continued our vision of creating well-designed, quality homes. Focused on modern lifestyles, it offered smart layouts, essential amenities, and a peaceful living environment. Malbar Gold added another milestone to the Malbar series, reinforcing our promise of delivering value-driven homes with a premium feel."
             ],
             image: img1
         },
         {
-            title: "Our Results",
+            title: "MALBAR PRIME : A Thoughtful Blend of Living and Working",
             content: [
-                "The proof is in our portfolio of successful projects and satisfied clients. We measure our success by the impact we make.",
-                "Our track record speaks for itself, with numerous awards and recognitions in our industry."
+                "Malbar Prime is our ongoing project in Nikol, and a proud continuation of the Malbar legacy. Designed with a focus on modern architecture, smart planning, and lifestyle comfort, Malbar Prime brings together everything we've learned from our past developments. It's more than just a project it's a step forward in our journey to shape quality living spaces for todays and tomorrow's families."
             ],
             image: img1
         },
-        {
-            title: "Our Results",
-            content: [
-                "The proof is in our portfolio of successful projects and satisfied clients. We measure our success by the impact we make.",
-                "Our track record speaks for itself, with numerous awards and recognitions in our industry."
-            ],
-            image: img1
-        }
     ];
 
     // Custom hook for section animation
@@ -186,13 +174,14 @@ function PortfolioPage() {
                 >
                     <h2 className="text-[40px] font-bold text-gray-900 mb-6">About Malbar</h2>
                     <p className="text-lg text-gray-600 max-w-3xl leading-relaxed">
-                        In the heart of Nikol, Ahmedabad, one name stands out when it comes to thoughtful development and real estate progress — <strong>Mr. Nrupansh Dalwadi</strong>.
+                        In the heart of Nikol, Ahmedabad, one name stands out when it comes to thoughtful development and real estate progress<strong>Mr. Nrupansh Dalwadi</strong>.
                         <br /><br />
                         With a deep-rooted commitment to the community and a vision to uplift the area, he has played a key role in bringing quality real estate to the forefront.
                         <br /><br />
-                        One such proud addition is <strong>Malbar</strong> — a step toward refined living, offering not just homes but a better lifestyle for families in Nikol.
+                        One such proud addition is <strong>Malbar</strong> a step toward refined living, offering not just homes but a better lifestyle for families in Nikol.
                         <br /><br />
                         It's a vision of modern community living where quality, comfort, and connection come together.
+                        <br /><br />
                     </p>
                 </motion.div>
 
@@ -200,15 +189,6 @@ function PortfolioPage() {
                 {/* Our Story Section */}
                 <div className="mt-24">
                     <div className="text-center mb-16">
-                        <motion.p
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 0.6 }}
-                            viewport={{ once: false }}
-                            className="tracking-[0.3em] text-blue-500 text-sm mb-2"
-                        >
-                            Our &nbsp; Story
-                        </motion.p>
                         <motion.h3
                             initial={{ y: 30, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
@@ -235,6 +215,7 @@ function PortfolioPage() {
                                         className="w-full h-[400px] object-cover transform transition-transform duration-700 hover:scale-105"
                                     />
                                 </ImageReveal>
+
                             </div>
 
                             <motion.div
@@ -262,7 +243,7 @@ function PortfolioPage() {
                                     </motion.p>
                                 ))}
 
-                                <motion.button
+                                {/* <motion.button
                                     variants={textItemVariants}
                                     whileHover={{
                                         scale: 1.05,
@@ -272,14 +253,23 @@ function PortfolioPage() {
                                     className="bg-orange-500 text-white px-6 py-3 rounded-md font-medium transition-all duration-300"
                                 >
                                     Enquire Now
-                                </motion.button>
+                                </motion.button> */}
                             </motion.div>
                         </div>
                     ))}
                 </div>
             </div>
-
+            <motion.div
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: false, amount: 0.3 }}
+                className="text-center font-semibold text-gray-600"
+            >
+                Together the combined vision of Rameshbhai Dalwadi and Nrupansh Rameshbhai Dalwadi bridges tradition with innovation, continuing to build spaces that stand strong and inspire pride.
+            </motion.div>
             <Contact />
+
         </div>
     );
 }

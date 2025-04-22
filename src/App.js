@@ -18,6 +18,7 @@ import Malbarhills from './components/malbar-hill/Malbar-hill.jsx';
 import Malbarprime from './components/malbar-prime/Malbar-prime.jsx';
 import PetrolPumpUI from "./components/Service/petrolpump/Petrolpump.jsx"
 import BricksShowcase from './components/Service/Bricks/Bricks.jsx';
+import MalbarprimeResidnatil from './components/malbar-prime/malbar-prme-residatial.jsx';
 
 // import Contact from './components/contact/Contact';
 
@@ -41,7 +42,7 @@ function App() {
           <Route path="/Malbar-Prime" element={<Malbarprime />} />
           <Route path="/petrolpump" element={<PetrolPumpUI />} />
           <Route path="/BricksShowcase" element={<BricksShowcase />} />
-          Roy
+          <Route path="/malbar-prime-residential" element={<MalbarprimeResidnatil />} />
         </Routes>
         <Footer />
       </div>

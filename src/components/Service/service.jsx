@@ -37,38 +37,41 @@ export default function Services() {
     }, [isHeaderInView, controls]);
 
     const [projects] = useState([
-        {
-            id: 1,
-            name: 'Malbar Royal',
-            description: 'Address of the land and availability',
-            image: img1,
-            path: '/Malbar-royal'
-        },
+
         {
             id: 2,
             name: 'Surya Kiran Bungalows',
-            description: 'Address of the land and availability',
+            description: 'The Beginning of a New Chapter',
             image: img2,
             path: '/Surya-kiran-bungalows'
         },
         {
-            id: 3,
-            name: 'Malbar Gold',
-            description: 'Address of the land and availability',
-            image: img3,
-            path: '/Malbar-gold'
-        },
-        {
             id: 4,
             name: 'Malbar Hills',
-            description: 'Address of the land and availability',
+            description: 'A Refreshing Escape within the City',
             image: img4,
             path: '/Malbar-hills'
         },
         {
+            id: 1,
+            name: 'Malbar Royal',
+            description: 'Where Comfort Meets Class',
+            image: img1,
+            path: '/Malbar-royal'
+        },
+
+        {
+            id: 3,
+            name: 'Malbar Gold',
+            description: 'Designed for Peaceful Living',
+            image: img3,
+            path: '/Malbar-gold'
+        },
+
+        {
             id: 5,
             name: 'Malbar Prime',
-            description: 'Address of the land and availability',
+            description: 'A Thoughtful Blend of Living and Working',
             image: img5,
             path: '/Malbar-Prime'
         },
@@ -227,15 +230,7 @@ export default function Services() {
                                     <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-3">
                                         <motion.button
                                             onClick={() => handleViewMore(project.path)}
-                                            className="bg-orange-500 hover:bg-orange-600 text-white text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                        >
-                                            Enquire Now
-                                        </motion.button>
-                                        <motion.button
-                                            onClick={() => handleViewMore(project.path)}
-                                            className="bg-transparent border border-white text-white text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded hover:bg-white/10"
+                                            className=" text-white bg-orange-500 hover:bg-orange-600 text-xs md:text-sm font-medium py-1.5 md:py-2 px-3 md:px-4 rounded "
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >

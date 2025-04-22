@@ -62,12 +62,12 @@ const slideInFromRight = {
     }
 };
 
-const Malbarprime = () => {
+const MalbarprimeResidnatil = () => {
+    const [activeTab, setActiveTab] = useState('highlights');
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-
-    const [activeTab, setActiveTab] = useState('features');
 
     const clients = [
         { name: 'ZARA', logo: '/logos/zara.png' },
@@ -111,28 +111,29 @@ const Malbarprime = () => {
         }
     ];
 
-    const features = [
-        "24/7 Water Supply (Hydro Pneumatic System)",
-        "Four High-Speed Elevators",
-        "Two-Level Parking for 158 Cars",
-        "24/7 Security & CCTV",
-        "Advanced Fire Safety"
+    const highlights = [
+        "Naturally lit, open spaces",
+        "Practical and airy layouts",
+        "Quality finishes with careful detailing",
+        "Access to essential services and green surroundings"
     ];
 
-    const specifications = [
-        "Earthquake-resistant RCC Structure",
-        "Glazed Aluminum Windows",
-        "Vitrified Tile & Granite Flooring",
-        "Concealed Premium Plumbing",
-        "MS Shutters, Laminated Flush Doors",
-        "Interior Putty, Exterior Paint/Cladding",
-        "Modular Switches, Concealed Wiring"
+    const lifestyleFeatures = [
+        "Yoga & Meditation Area",
+        "Jogging/Cycling Track",
+        "Children's Play Area",
+        "Banquet Hall",
+        "Party Lawn",
+        "Water Supply & Power Backup",
+        "Lift Access",
+        "CCTV Surveillance",
+        "Green Landscaping"
     ];
 
     return (
         <div className="min-h-screen pt-20">
             <div className="container mx-auto px-4 py-8">
-                {/* Malbar Prime Section */}
+                {/* Malbar Prime Introduction Section */}
                 <motion.div
                     className="mb-16 lg:px-32"
                     initial="hidden"
@@ -145,22 +146,28 @@ const Malbarprime = () => {
                         variants={slideInFromLeft}
                         style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
-                        Malbar Prime: Commercial
+                        Malbar Prime: Residential
                     </motion.h2>
-                    <motion.div
+                    <motion.p
+                        className="text-gray-700 mb-2 ml-12"
+                        variants={itemVariants}
+                    >
+                        <strong>Address:</strong> Nr. Saurashtra Patel Seva Samaj, Nikol, North East, Ahmedabad
+                    </motion.p>
+                    <motion.p
                         className="text-gray-700 mb-4 ml-12"
                         variants={itemVariants}
                     >
-                        <p>
-                            Aimed at today's growing businesses, Malbar Prime Commercial provides well-structured office layouts, terrace lounges, and meeting spaces to support productivity. Its design focuses on function, ease of use, and visual appeal making it a valuable space in the growing Nikol business area.
-                        </p>
-                    </motion.div>
+                        Nestled in Nikol, Malbar Prime is a 1.52-acre residential project offering 3 BHK homes.
+                        With smart layouts and quality finishes, each unit is planned for comfort and simplicity.
+                        It's a space meant not just to live but to feel at home.
+                    </motion.p>
                     <motion.button
                         className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded ml-12"
                         variants={itemVariants}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => window.location.href = '/contact'}
+                        onClick={() => window.location.href = "/contact"}
                     >
                         Enquire Now
                     </motion.button>
@@ -177,83 +184,74 @@ const Malbarprime = () => {
                     <ImageSlider images={images} />
                 </motion.div>
 
-                {/* Features and Specifications Tabs Card */}
+                {/* Features Tab Section */}
                 <motion.div
-                    className="mb-16 max-w-4xl mx-auto"
+                    className="mb-16"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    variants={containerVariants}
+                    variants={fadeIn}
                 >
-                    <motion.div
-                        className="bg-white rounded-lg shadow-lg overflow-hidden"
-                        variants={fadeIn}
-                    >
-                        {/* Tabs */}
-                        <div className="flex border-b">
+                    <div className="max-w-4xl mx-auto">
+                        <div className="flex mb-6">
                             <button
-                                className={`flex-1 py-4 px-6 text-center font-medium ${activeTab === 'features' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500 hover:text-gray-700'}`}
-                                onClick={() => setActiveTab('features')}
+                                className={`flex-1 py-3 text-center font-semibold transition-all duration-300 ${activeTab === 'highlights' ? 'border-b-2 border-orange-500 text-orange-500' : 'text-gray-500'}`}
+                                onClick={() => setActiveTab('highlights')}
                             >
-                                Prime Features
+                                Highlights
                             </button>
                             <button
-                                className={`flex-1 py-4 px-6 text-center font-medium ${activeTab === 'specifications' ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500 hover:text-gray-700'}`}
-                                onClick={() => setActiveTab('specifications')}
+                                className={`flex-1 py-3 text-center font-semibold transition-all duration-300 ${activeTab === 'lifestyle' ? 'border-b-2 border-orange-500 text-orange-500' : 'text-gray-500'}`}
+                                onClick={() => setActiveTab('lifestyle')}
                             >
-                                Specifications
+                                Lifestyle Features
                             </button>
                         </div>
 
-                        {/* Tab Content */}
-                        <div className="p-6">
-                            {activeTab === 'features' ? (
-                                <motion.ul
-                                    className="space-y-2"
+                        <div className="bg-white rounded-lg shadow-lg p-8">
+                            {activeTab === 'highlights' && (
+                                <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
+                                    exit={{ opacity: 0 }}
+                                    className="space-y-4"
                                 >
-                                    {features.map((feature, index) => (
-                                        <motion.li
-                                            key={index}
-                                            className="flex items-start"
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: index * 0.1 }}
-                                        >
-                                            <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                            {feature}
-                                        </motion.li>
-                                    ))}
-                                </motion.ul>
-                            ) : (
-                                <motion.ul
-                                    className="space-y-2"
+                                    <h3 className="text-xl font-semibold mb-4 text-orange-500"
+                                        style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                        Project Highlights</h3>
+                                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {highlights.map((item, index) => (
+                                            <li key={index} className="flex items-start">
+                                                <span className="text-orange-500 mr-2">•</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </motion.div>
+                            )}
+
+                            {activeTab === 'lifestyle' && (
+                                <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.5 }}
+                                    exit={{ opacity: 0 }}
+                                    className="space-y-4"
                                 >
-                                    {specifications.map((spec, index) => (
-                                        <motion.li
-                                            key={index}
-                                            className="flex items-start"
-                                            initial={{ x: -20, opacity: 0 }}
-                                            animate={{ x: 0, opacity: 1 }}
-                                            transition={{ delay: index * 0.1 }}
-                                        >
-                                            <svg className="h-5 w-5 text-orange-500 mr-2 mt-0.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                            {spec}
-                                        </motion.li>
-                                    ))}
-                                </motion.ul>
+                                    <h3 className="text-xl font-semibold mb-4 text-orange-500"
+                                        style={{ fontFamily: 'Poppins, sans-serif' }}>
+                                        Lifestyle Amenities</h3>
+                                    <ul className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        {lifestyleFeatures.map((item, index) => (
+                                            <li key={index} className="flex items-start">
+                                                <span className="text-orange-500 mr-2">•</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </motion.div>
                             )}
                         </div>
-                    </motion.div>
+                    </div>
                 </motion.div>
 
                 {/* Our Clients Section */}
@@ -323,4 +321,4 @@ const Malbarprime = () => {
     );
 };
 
-export default Malbarprime;
+export default MalbarprimeResidnatil;

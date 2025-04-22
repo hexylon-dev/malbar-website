@@ -60,24 +60,24 @@ const Header = () => {
             title: "Residential",
             path: "/projects/residential",
             subItems: [
-                { title: "Apartments", path: "/projects/residential/apartments" },
-                { title: "Houses", path: "/projects/residential/houses" },
+                { title: "Malbar Prime Residantial", path: "/malbar-prime-residential" },
+                // { title: "Houses", path: "/projects/residential/houses" },
             ],
         },
         {
             title: "Commercial",
             path: "/projects/commercial",
             subItems: [
-                { title: "Office Buildings", path: "/projects/commercial/office-buildings" },
-                { title: "Retail Spaces", path: "/projects/commercial/retail-spaces" },
+                // { title: "Office Buildings", path: "/projects/commercial/office-buildings" },
+                // { title: "Retail Spaces", path: "/projects/commercial/retail-spaces" },
             ],
         },
         {
             title: "On Going",
-            path: "/projects/ongoing",
+            // path: "/projects/ongoing",
             subItems: [
-                { title: "Current Projects", path: "/projects/ongoing/current" },
-                { title: "Upcoming Projects", path: "/projects/ongoing/upcoming" },
+                // { title: "Current Projects", path: "/projects/ongoing/current" },
+                // { title: "Upcoming Projects", path: "/projects/ongoing/upcoming" },
             ],
         },
     ]
