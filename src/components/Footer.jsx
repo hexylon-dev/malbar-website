@@ -69,7 +69,14 @@ export default function Footer() {
                     </div>
 
                     {/* Contact Info */}
-                    <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0 md:space-x-6 w-full">
+                        {/* Copyright */}
+                        <p className="w-full md:w-auto text-center">
+                            <span className="text-sm text-gray-600">
+                                © NRD. All rights reserved.
+                            </span>
+                        </p>
+
                         {/* Address */}
                         <div className="flex items-center text-sm text-gray-600">
                             <svg className="w-4 h-4 text-orange-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -93,10 +100,10 @@ export default function Footer() {
                             <svg className="w-4 h-4 text-orange-500 mr-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path>
                             </svg>
-                            <span>
-                                +55555</span>
+                            <span>+55555</span>
                         </div>
                     </div>
+
                 </div>
             </div>
         </footer>

@@ -3,7 +3,7 @@
 import React from "react"
 import { Instagram } from "lucide-react"
 import { motion, useInView, useAnimation } from "framer-motion"
-import img1 from "../../asset/cartoon.png"
+import img1 from "../../asset/IMG-1.JPG"
 
 export default function About() {
     const controls = useAnimation()
@@ -133,67 +133,93 @@ export default function About() {
                         }}
                         className="w-full md:w-3/5 p-6 rounded-lg"
                     >
-                        <h2 className="text-3xl font-bold mb-6"
-                            style={{ fontFamily: 'Poppins, sans-serif' }}>Nrupansh Dalwadi</h2>
+                        <h2
+                            className="text-3xl font-bold mb-6 "
+                            style={{ fontFamily: 'Poppins, sans-serif' }}
+                        >
+                            Nrupansh R Dalwadi
+                        </h2>
+
 
                         {/* Social Icons */}
                         <div className="flex gap-4 mb-8">
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ delay: 0.1, type: "spring" }}
-                                whileHover={{ scale: 1.1, rotate: 10 }}
-                                className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
+                            <a
+                                href="https://www.linkedin.com/in/nrupansh-dalwadi-a4b18b38/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ delay: 0.1, type: "spring" }}
+                                    whileHover={{ scale: 1.1, rotate: 10 }}
+                                    className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
                                 >
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </motion.div>
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ delay: 0.1, type: "spring" }}
-                                whileHover={{ scale: 1.1, rotate: -10 }}
-                                className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
+                                    </svg>
+                                </motion.div>
+                            </a>
+
+                            <a
+                                href="https://www.facebook.com/search/top?q=nrupansh%20dalwadi"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="20"
-                                    height="20"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ delay: 0.1, type: "spring" }}
+                                    whileHover={{ scale: 1.1, rotate: -10 }}
+                                    className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
                                 >
-                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                                </svg>
-                            </motion.div>
-                            <motion.div
-                                initial={{ scale: 0 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: false, amount: 0.3 }}
-                                transition={{ delay: 0.1, type: "spring" }}
-                                whileHover={{ scale: 1.1, rotate: 10 }}
-                                className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="2"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                                    </svg>
+                                </motion.div>
+                            </a>
+
+                            <a
+                                href="https://www.instagram.com/nrupanshdalwadi/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <Instagram size={20} />
-                            </motion.div>
+                                <motion.div
+                                    initial={{ scale: 0 }}
+                                    whileInView={{ scale: 1 }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{ delay: 0.1, type: "spring" }}
+                                    whileHover={{ scale: 1.1, rotate: 10 }}
+                                    className="bg-white text-orange-500 border border-orange-500 rounded-full p-3 w-12 h-12 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors duration-300"
+                                >
+                                    <Instagram size={20} />
+                                </motion.div>
+                            </a>
+
                         </div>
 
                         {/* Content Text */}
@@ -259,6 +285,6 @@ export default function About() {
                     </motion.div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

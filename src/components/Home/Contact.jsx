@@ -188,7 +188,7 @@ export default function Contact() {
                                     value={formData.phone}
                                     onChange={handleChange}
                                     className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                    placeholder="+01 XXXX XXXXX"
+                                    placeholder="+91 XXXX XXXXX"
                                 />
                             </motion.div>
                         </motion.div>

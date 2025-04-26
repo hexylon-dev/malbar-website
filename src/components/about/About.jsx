@@ -9,12 +9,13 @@ import img4 from "../../asset/surya-2 (1).webp"
 import img5 from "../../asset/Hills-2.webp"
 import img6 from "../../asset/royal-img-2.webp"
 import img7 from "../../asset/prime-21.webp"
+import img8 from "../../asset/petrol-pump.webp"
 
 function PortfolioPage() {
     // Data for the sections
     const sections = [
         {
-            title: "The Malbar Story : From Bricks to Buildings",
+            title: "Bricks Furnace: From Bricks to Buildings",
             descriprtion: "From Foundation to Future: Our Journey",
             content: [
                 "The story begins in 1965 when Rameshbhai started a brick furnace in Nikol. His dedication, values, and steady focus laid the foundation of a business built on trust. Every brick reflected a commitment to quality.  Years later, his son Nrupansh carried the legacy forward with a broader vision  stepping into real estate to meet the city’s growing housing needs.What began as brick- making evolved into thoughtful real estate development rooted in the same values."
@@ -56,6 +57,13 @@ function PortfolioPage() {
                 "Malbar Prime is our ongoing project in Nikol, and a proud continuation of the Malbar legacy. Designed with a focus on modern architecture, smart planning, and lifestyle comfort, Malbar Prime brings together everything we've learned from our past developments. It's more than just a project it's a step forward in our journey to shape quality living spaces for todays and tomorrow's families."
             ],
             image: img7
+        },
+        {
+            title: "A Trusted Stop in Nikol Since 2020",
+            content: [
+                "  Launched in 2020, our HPCL petrol pump in Nikol, Ahmedabad, marks a milestone in our journey towards better service and accessibility. Strategically located to serve daily commuters and locals alike, the pump has witnessed an impressive 50,000+ footfall since inception, a testament to the trust and satisfaction of our customers.   Every refill here isn’t just fuel, it’s a promise to keep moving forward, together."]
+            ,
+            image: img8
         },
     ];
 
