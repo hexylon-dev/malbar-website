@@ -115,7 +115,7 @@ const SuryaKiranBungalows = () => {
                     viewport={{}}
                 >
                     {/* <h2 className="text-3xl font-semibold text-center text-orange-500 mb-6">What Our Clients Say</h2> */}
-                    <Projectcard />
+                    {/* <Projectcard /> */}
                 </motion.div>
 
 

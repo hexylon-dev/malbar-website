@@ -4,16 +4,59 @@ import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useAnimation } from "framer-motion"
 import img1 from "../../asset/gold.webp"
 import img2 from "../../asset/Hills-2.webp"
-// Note: You'll need to import your actual images
-// If you're using Next.js Image component, adjust accordingly
+
+// Updated FeatureCard component with description paragraph
+const FeatureCard = ({ icon, title, delay, description }) => {
+    const controls = useAnimation()
+    const ref = useRef(null)
+    const isInView = useInView(ref, {
+        once: false,
+        amount: 0.2,
+    })
+
+    useEffect(() => {
+        if (isInView) {
+            controls.start("visible")
+        } else {
+            controls.start("hidden")
+        }
+    }, [isInView, controls])
+
+    return (
+        <motion.div
+            ref={ref}
+            initial="hidden"
+            animate={controls}
+            variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        duration: 0.8,
+                        delay: delay / 1000,
+                        ease: [0.16, 0.77, 0.47, 0.97],
+                    },
+                },
+            }}
+            className="p-6 rounded-xl bg-white shadow-md hover:shadow-lg transition-shadow duration-300"
+        >
+            <div className="flex flex-col items-center">
+                <div className="mb-4 p-3 bg-red-50 rounded-full">{icon}</div>
+                <h3 className="text-lg font-semibold mb-2">{title}</h3>
+                <p className="text-gray-600 text-center text-sm">{description}</p>
+            </div>
+        </motion.div>
+    )
+}
 
 const Gallery = ({ end, title, delay = 0 }) => {
     const controls = useAnimation()
     const ref = useRef(null)
     const isInView = useInView(ref, {
-        once: false, // Changed to false to allow re-animation on scroll
-        amount: 0.2, // Reduced threshold for earlier trigger
-        margin: "0px 0px -10% 0px" // Negative margin to trigger slightly before fully in view
+        once: false,
+        amount: 0.2,
+        margin: "0px 0px -10% 0px",
     })
     const [count, setCount] = useState(0)
 
@@ -68,8 +111,8 @@ const Gallery = ({ end, title, delay = 0 }) => {
                         transition: {
                             duration: 0.8,
                             delay: delay / 1000,
-                            ease: [0.16, 0.77, 0.47, 0.97]
-                        }
+                            ease: [0.16, 0.77, 0.47, 0.97],
+                        },
                     },
                 }}
                 className="text-lg font-medium text-gray-800 mb-2"
@@ -89,8 +132,8 @@ const Gallery = ({ end, title, delay = 0 }) => {
                             delay: (delay + 200) / 1000,
                             type: "spring",
                             stiffness: 100,
-                            damping: 10
-                        }
+                            damping: 10,
+                        },
                     },
                 }}
                 className="text-6xl font-bold"
@@ -101,12 +144,137 @@ const Gallery = ({ end, title, delay = 0 }) => {
     )
 }
 
+// Updated features array with added descriptions and reduced to 6 items
+const features = [
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+        ),
+        title: "Prime Locations",
+        description: "We build where life grows well-connected, fast-developing areas.",
+        delay: 200,
+    },
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8L12 16M8 12L16 12" />
+            </svg>
+        ),
+        title: "Smart Design",
+        description: "Modern, practical spaces made for real living.",
+        delay: 300,
+    },
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <path d="M12 2v10l4.24 4.24M12 2v10l-4.24 4.24M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z" />
+            </svg>
+        ),
+        title: "Trusted Quality",
+        description: "Top materials. Clean finish. Delivered as promised.",
+        delay: 400,
+    },
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+        ),
+        title: "Transparent Deals",
+        description: "No hidden costs. No last-minute surprises.",
+        delay: 500,
+    },
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+        ),
+        title: "Future-Ready Homes",
+        description: "Homes that grow with your dreams.",
+        delay: 600,
+    },
+    {
+        icon: (
+            <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-red-500"
+            >
+                <polyline points="9 18 15 12 9 6" />
+            </svg>
+        ),
+        title: "Innovative Amenities",
+        description: "Modern conveniences are designed to enhance your lifestyle and comfort",
+        delay: 700,
+    },
+]
+
 export default function WhyChooseUs() {
     const controls = useAnimation()
     const ref = useRef(null)
     const isInView = useInView(ref, {
-        once: false, // Changed to false to re-trigger on scroll
-        amount: 0.1 // Lower threshold for earlier trigger
+        once: false,
+        amount: 0.1,
     })
 
     useEffect(() => {
@@ -118,7 +286,7 @@ export default function WhyChooseUs() {
     }, [isInView, controls])
 
     return (
-        <section className="py-16 px-4 max-w-7xl mx-auto" id="why-choose-us">
+        <section className="px-4 max-w-7xl mx-auto py-16" id="why-choose-us">
             <div ref={ref} className="min-h-[90vh] flex flex-col justify-start">
                 <motion.div
                     initial="hidden"
@@ -130,13 +298,13 @@ export default function WhyChooseUs() {
                             y: 0,
                             transition: {
                                 duration: 0.8,
-                                ease: [0.16, 0.77, 0.47, 0.97]
-                            }
+                                ease: [0.16, 0.77, 0.47, 0.97],
+                            },
                         },
                     }}
                     className="text-center mb-2"
                 >
-                    <h2 className="text-teal-600 tracking-wide uppercase text-sm font-medium">W h y C h o o s e&nbsp; U s</h2>
+                    {/* <h2 className="text-teal-600 tracking-wide uppercase text-sm font-medium">Why Choose Us</h2> */}
                 </motion.div>
 
                 <motion.div
@@ -150,21 +318,34 @@ export default function WhyChooseUs() {
                             transition: {
                                 duration: 0.9,
                                 delay: 0.2,
-                                ease: [0.16, 0.77, 0.47, 0.97]
-                            }
+                                ease: [0.16, 0.77, 0.47, 0.97],
+                            },
                         },
                     }}
-                    className="text-center mb-6"
+                    className="text-center mb-10"
                 >
-                    <h1 className="text-5xl md:text-5xl font-bold mb-6"
-                        style={{ fontFamily: 'Poppins, sans-serif' }}>Why Choose Us</h1>
-                    <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed px-4">
-                        What makes us unique is our unwavering commitment to excellence. We're not just a travel agency; we're your
-                        trusted travel companion. Discover the reasons why travelers like you choose us for their adventures
-                    </p>
+                    <h1
+                        className="text-4xl md:text-5xl font-bold mb-8"
+                        style={{ fontFamily: "Poppins, sans-serif" }}
+                    >
+                        Why Choose us?
+                    </h1>
+
+                    {/* Updated grid to show exactly 3 cards per row */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        {features.map((feature, index) => (
+                            <FeatureCard
+                                key={index}
+                                icon={feature.icon}
+                                title={feature.title}
+                                description={feature.description}
+                                delay={feature.delay}
+                            />
+                        ))}
+                    </div>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16 mr-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-16">
                     {/* Image gallery with responsive layouts */}
                     <div className="relative h-[400px] md:h-[500px] flex items-center justify-center">
                         {/* Main image with border */}
@@ -183,11 +364,11 @@ export default function WhyChooseUs() {
                                         type: "spring",
                                         stiffness: 80,
                                         damping: 10,
-                                        ease: [0.16, 0.77, 0.47, 0.97]
+                                        ease: [0.16, 0.77, 0.47, 0.97],
                                     },
                                 },
                             }}
-                            className="absolute z-10 w-[60%] h-auto aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border-4 border-white "
+                            className="absolute z-10 w-[60%] h-auto aspect-[3/4] rounded-3xl overflow-hidden shadow-xl border-4 border-white"
                             style={{ maxHeight: "90%" }}
                         >
                             <img
@@ -214,7 +395,7 @@ export default function WhyChooseUs() {
                                         type: "spring",
                                         stiffness: 80,
                                         damping: 10,
-                                        ease: [0.16, 0.77, 0.47, 0.97]
+                                        ease: [0.16, 0.77, 0.47, 0.97],
                                     },
                                 },
                             }}
@@ -230,11 +411,11 @@ export default function WhyChooseUs() {
                     </div>
 
                     {/* Stats grid - now responsive */}
-                    <div className="grid grid-cols-2 gap-5 md:gap-10 px-1 md:px-0 ">
-                        <Gallery end={20} title="Total Projects" delay={800} />
-                        <Gallery end={200} title="Happy Clients" delay={1000} />
-                        <Gallery end={5} title="Current Projects" delay={1200} />
-                        <Gallery end={20} title="Coming Soon" delay={1400} />
+                    <div className="grid grid-cols-2 gap-5 md:gap-10 px-1 md:px-0 mt-52">
+                        <Gallery end={5} title="Total Projects" delay={800} />
+                        <Gallery end={1000} title="Happy Clients" delay={900} />
+                        {/* <Gallery end={5} title="Current Projects" delay={900} /> */}
+                        {/* <Gallery end={20} title="Coming Soon" delay={900} /> */}
                     </div>
                 </div>
             </div>

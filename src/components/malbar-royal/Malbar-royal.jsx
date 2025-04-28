@@ -225,7 +225,7 @@ const Savitamalbar = () => {
                 </motion.div>
 
                 {/* Testimonials / Projects */}
-                <motion.div
+                {/* <motion.div
                     className="mt-20"
                     initial="hidden"
                     whileInView="visible"
@@ -233,7 +233,7 @@ const Savitamalbar = () => {
                     variants={fadeIn}
                 >
                     <Projectcard />
-                </motion.div>
+                </motion.div> */}
 
                 {/* Contact */}
                 <motion.div

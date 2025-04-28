@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, User, MessageSquare } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 
 export default function Contact() {
@@ -78,7 +78,7 @@ export default function Contact() {
             >
                 <h1 className="text-2xl font-bold text-orange-500"
                     style={{ fontFamily: 'Poppins, sans-serif' }}>Contact Us</h1>
-                <p className="text-sm text-gray-600 mt-1">Any question or remarks? Just write us a message!</p>
+                {/* <p className="text-sm text-gray-600 mt-1">Any question or remarks? Just write us a message!</p> */}
             </motion.div>
 
             <motion.div
@@ -104,14 +104,14 @@ export default function Contact() {
                             <div className="w-6 mr-4">
                                 <Phone className="w-5 h-5" />
                             </div>
-                            <span>+123-456-789</span>
+                            <span>+915555</span>
                         </motion.div>
 
                         <motion.div className="flex items-center" variants={itemVariants}>
                             <div className="w-6 mr-4">
                                 <Mail className="w-5 h-5" />
                             </div>
-                            <span>555@gmail.com</span>
+                            <span>example@gmail.com</span>
                         </motion.div>
 
                         <motion.div className="flex items-center" variants={itemVariants}>
@@ -141,69 +141,96 @@ export default function Contact() {
                     <form onSubmit={handleSubmit}>
                         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6" variants={containerVariants}>
                             <motion.div variants={itemVariants}>
-                                <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                <input
-                                    type="text"
-                                    id="firstName"
-                                    name="firstName"
-                                    value={formData.firstName}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                    placeholder="John"
-                                />
+                                {/* <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label> */}
+                                <div className="relative mb-3">
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                        <User size={18} />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        id="firstName"
+                                        name="firstName"
+                                        value={formData.firstName}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
+                                        placeholder="First Name"
+                                    />
+                                </div>
                             </motion.div>
+
                             <motion.div variants={itemVariants}>
-                                <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                                <input
-                                    type="text"
-                                    id="lastName"
-                                    name="lastName"
-                                    value={formData.lastName}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                    placeholder="Doe"
-                                />
+                                {/* <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label> */}
+                                <div className="relative mb-4">
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                        <User size={18} />
+                                    </span>
+                                    <input
+                                        type="text"
+                                        id="lastName"
+                                        name="lastName"
+                                        value={formData.lastName}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
+                                        placeholder="Last Name"
+                                    />
+                                </div>
                             </motion.div>
                         </motion.div>
 
                         <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6" variants={containerVariants}>
                             <motion.div variants={itemVariants}>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                    placeholder="example@email.com"
-                                />
+                                {/* <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label> */}
+                                <div className="relative">
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                        <Mail size={18} />
+                                    </span>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
+                                        placeholder="Email"
+                                    />
+                                </div>
                             </motion.div>
+
                             <motion.div variants={itemVariants}>
-                                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                    placeholder="+01 XXXX XXXXX"
-                                />
+                                {/* <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label> */}
+                                <div className="relative">
+                                    <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                                        <Phone size={18} />
+                                    </span>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full pl-10 pr-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
+                                        placeholder="Phone"
+                                    />
+                                </div>
                             </motion.div>
                         </motion.div>
 
                         <motion.div className="mb-8" variants={itemVariants}>
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows={3}
-                                className="w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
-                                placeholder="Write your message..."
-                            ></textarea>
+                            {/* <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label> */}
+                            <div className="relative">
+                                <span className="absolute left-3 top-3 text-gray-400">
+                                    <MessageSquare size={18} />
+                                </span>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    rows={3}
+                                    className="w-full pl-10 pr-3 py-2 border-b border-gray-300 focus:outline-none focus:border-orange-500"
+                                    placeholder="Write your message..."
+                                ></textarea>
+                            </div>
                         </motion.div>
 
                         <motion.div

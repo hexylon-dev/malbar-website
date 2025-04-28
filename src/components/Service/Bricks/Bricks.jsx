@@ -57,7 +57,7 @@ export default function BricksShowcase() {
                         className={`inline-block text-2xl md:text-4xl font-bold tracking-wider text-black transition-opacity duration-700 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
                         style={{ transitionDelay: '1000ms' }}
                     >
-                        BRICKS
+                        BRICKS Furnace
                     </h2>
                 </div>
             </div>
@@ -67,7 +67,7 @@ export default function BricksShowcase() {
                 ref={textContainerRef}
                 className="max-w-6xl mx-auto space-y-3 md:space-y-4 px-4 md:px-6 py-5 md:py-7"
             >
-                {[0, 1].map((index) => (
+                {[0].map((index) => (
                     <p
                         key={index}
                         className={`text-gray-800 text-base md:text-lg transition-all duration-500 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}
@@ -76,8 +76,7 @@ export default function BricksShowcase() {
                             transitionProperty: 'opacity, transform'
                         }}
                     >
-                        Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                        standard dummy text ever since the 1500s,
+                        Established in 1965 in Nikol, Ahmedabad, our journey began with a clear vision to lay the foundation for quality construction through superior brick manufacturing. Founded with a simple belief, "Quality is the foundation of every lasting structure," our bricks have been the building blocks for countless homes, commercial spaces, and infrastructure projects, reflecting strength, durability, and craftsmanship. Rooted in tradition and driven by innovation, we continue to blend time-honored techniques with modern advancements to meet the dynamic needs of today's construction world.
                     </p>
                 ))}
             </div>

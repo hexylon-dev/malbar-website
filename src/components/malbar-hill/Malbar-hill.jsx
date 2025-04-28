@@ -294,7 +294,7 @@ const Malbarhills = () => {
                     animate={testimonialControls}
                     className="mt-12 sm:mt-20"
                 >
-                    <Projectcard />
+                    {/* <Projectcard /> */}
                 </motion.div>
 
                 {/* Contact Form */}

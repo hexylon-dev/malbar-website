@@ -144,17 +144,13 @@ export default function Services() {
                 {/* Header Section with scroll trigger */}
                 <motion.div
                     ref={headerRef}
-                    className="mb-9 max-w-2xl mt-10 md:mt-20 mx-auto md:ml-28"
+                    className="mb-9 mt-10 md:mt-20 mx-auto"
                     variants={fadeInUp}
                     initial="hidden"
                     animate={isHeaderInView ? "visible" : "hidden"}
                 >
-                    <p className="text-gray-600 mb-5 text-center md:text-left">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br className="hidden md:block" />
-                        It has been the industry's standard dummy text ever since the 1500s.
-                    </p>
-                    <p className="text-gray-600 mb-4 text-center md:text-left">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.<br className="hidden md:block" />
+                    <p className="mr-28">
+                        We began our construction journey in 2006 with Project Suryakiran a landmark that stood for trust, timely delivery, and uncompromised quality. As our vision expanded, we introduced a new identity Malbar in 2012 to represent modern living, innovative architecture, and lifestyle-driven spaces. Malbar isn’t just a name  it’s a promise. Under the Malbar brand, we’ve developed premium residential villas, commercial hubs, and mixed-use spaces, all rooted in smart planning and design. Our projects are strategically located to offer both connectivity and convenience perfect for families, investors, and entrepreneurs. With nearly two decades of experience, we continue to build with the same integrity and passion that started it all.
                     </p>
                 </motion.div>
 
@@ -234,7 +230,7 @@ export default function Services() {
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                         >
-                                            ONGOING
+                                            Ongoing
                                         </motion.button>
                                         <h3 className="text-xl md:text-2xl font-bold text-white mb-1 md:mb-2"
                                             style={{ fontFamily: 'Poppins, sans-serif' }}>{project.name}</h3>

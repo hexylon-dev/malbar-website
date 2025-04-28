@@ -32,9 +32,9 @@ const Suburban = () => {
                 </div>
                 {/* Testimonials slider at the bottom */}
                 <div className="mt-20">
-                    <h2 className="text-3xl font-semibold text-center text-orange-500"
+                    {/* <h2 className="text-3xl font-semibold text-center text-orange-500"
                         style={{ fontFamily: 'Poppins, sans-serif' }}>What Our Clients Say</h2>
-                    <Projectcard />
+                    <Projectcard /> */}
                 </div>
                 <div>
                     <ContactForm />

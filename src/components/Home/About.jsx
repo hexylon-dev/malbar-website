@@ -73,7 +73,7 @@ export default function About() {
 
             {/* Content (Unrotated) */}
             <div className="max-w-6xl mx-auto p-8 py-16 relative z-10">
-                <motion.div
+                {/* <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 0.77, 0.47, 0.97] }}
@@ -86,12 +86,12 @@ export default function About() {
                     >
                         About <span className="text-orange-500">Myself</span>
                     </h1>
-                    <p className="text-gray-600 mt-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                        Any assistance or workplace. Just write up or messaged</p>
-                </motion.div>
+                    {/* <p className="text-gray-600 mt-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                        Any assistance or workplace. Just write up or messaged</p> */}
+                {/* </motion.div> */}
 
                 <div className="flex flex-col md:flex-row gap-12">
-                    {/* Image Container - Updated with responsive sizing */}
+                    {/* Image Container - Fixed with specific height */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -107,18 +107,18 @@ export default function About() {
                         <motion.div
                             whileHover={{ y: -10 }}
                             transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                            className="rounded-lg overflow-hidden shadow-lg bg-white w-full h-auto
-                                       max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+                            className="rounded-lg overflow-hidden shadow-lg bg-white w-full mt-16"
+                            style={{ height: "400px" }} // Fixed height for the container
                         >
                             <img
                                 src={img1 || "/placeholder.svg"}
                                 alt="Profile"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-center" // Keep aspect ratio and center the image
                             />
                         </motion.div>
                     </motion.div>
 
-                    {/* Content Container */}
+                    {/* Content Container - Improved vertical alignment with image */}
                     <motion.div
                         ref={ref}
                         initial={{ opacity: 0, x: 50 }}
@@ -131,7 +131,7 @@ export default function About() {
                             stiffness: 100,
                             delay: 0.2
                         }}
-                        className="w-full md:w-3/5 p-6 rounded-lg"
+                        className="w-full md:w-3/5 p-6 rounded-lg flex flex-col justify-center" // Added flex and justify-center
                     >
                         <h2
                             className="text-3xl font-bold mb-6 "
@@ -139,7 +139,6 @@ export default function About() {
                         >
                             Nrupansh R Dalwadi
                         </h2>
-
 
                         {/* Social Icons */}
                         <div className="flex gap-4 mb-8">
@@ -219,32 +218,26 @@ export default function About() {
                                     <Instagram size={20} />
                                 </motion.div>
                             </a>
-
                         </div>
 
-                        {/* Content Text */}
-                        <motion.p
+                        {/* Content Text - Improved formatting */}
+                        <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.3 }}
                             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-                            className="text-gray-700 mb-6 text-lg"
+                            className="text-gray-700 mb-6 text-lg space-y-4"
                         >
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                            explicabo.
-                        </motion.p>
-
-                        <motion.p
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-                            className="text-gray-700 mb-8 text-lg"
-                        >
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                            rem aperiam
-                        </motion.p>
+                            <p className="leading-relaxed">
+                                Nrupansh R Dalwadi is a visionary entrepreneur who successfully expanded his family's brick furnace business before venturing into the construction industry in Ahmedabad. With a strong foundation in quality craftsmanship, he now leads projects across residential, commercial, and luxury real estate sectors.
+                            </p>
+                            <p className="leading-relaxed">
+                                Known for his focus on trust, innovation, and timely delivery, Nrupansh is committed to building spaces that inspire and endure. His multifaceted business ventures are a testament to his relentless drive, resilience, and passion for creating value.
+                            </p>
+                            <p className="leading-relaxed">
+                                Known for his grounded approach and commitment to building relationships founded on trust, integrity, and mutual growth. His journey inspires others, positioning him as a successful entrepreneur and a role model for aspiring business leaders. With his unwavering dedication, Nrupansh continues to lead by example, shaping the future of business and entrepreneurship.
+                            </p>
+                        </motion.div>
 
                         {/* Contact Buttons */}
                         <div className="flex gap-4">
@@ -285,6 +278,6 @@ export default function About() {
                     </motion.div>
                 </div>
             </div>
-        </div >
+        </div>
     )
 }

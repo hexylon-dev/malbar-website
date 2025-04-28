@@ -187,7 +187,7 @@ function PortfolioPage() {
                 >
                     <h2 className="text-[40px] font-bold text-gray-900 mb-6 text-center">About Malbar</h2>
                     <p className="text-lg text-gray-600 max-w-3xl leading-relaxed mx-auto ">
-                        In the heart of Nikol, Ahmedabad, one name stands out when it comes to thoughtful development and real estate progress<strong>Mr. Nrupansh Dalwadi</strong>.
+                        In the heart of Nikol, Ahmedabad, one name stands out when it comes to thoughtful development and real estate progress <strong>Mr. Nrupansh Dalwadi</strong>.
 
                         With a deep-rooted commitment to the community and a vision to uplift the area, he has played a key role in bringing quality real estate to the forefront.
 

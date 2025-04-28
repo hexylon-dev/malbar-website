@@ -127,18 +127,18 @@ export default function AchievementsCard() {
                                 transition={{ delay: 0.4 }}
                                 viewport={{ once: true }}
                             >
-                                NAME OF AWARD
+                                Sales Leadership Award
                             </motion.h2>
                             <motion.p
-                                className="mb-4 text-gray-700"
+                                className="mb-4"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 transition={{ delay: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                Recognizing Manek Krupa Petroleum for achieving the highest MS sales in Ahmedabad Region – H1 FY 2022-23.
                             </motion.p>
-                            <motion.button
+                            {/* <motion.button
                                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition duration-300"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -148,7 +148,7 @@ export default function AchievementsCard() {
                                 viewport={{ once: true }}
                             >
                                 View Glimpse
-                            </motion.button>
+                            </motion.button> */}
                         </div>
                     </motion.div>
 
@@ -184,7 +184,7 @@ export default function AchievementsCard() {
                                 transition={{ delay: 0.4 }}
                                 viewport={{ once: true }}
                             >
-                                NAME OF AWARD
+                                Token of Appreciation - FY 2023-24
                             </motion.h2>
                             <motion.p
                                 className="mb-4 text-gray-700"
@@ -193,9 +193,9 @@ export default function AchievementsCard() {
                                 transition={{ delay: 0.5 }}
                                 viewport={{ once: true }}
                             >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                A symbol of gratitude and excellence, awarded by HPCL for outstanding contributions.
                             </motion.p>
-                            <motion.button
+                            {/* <motion.button
                                 className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md transition duration-300"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -205,7 +205,7 @@ export default function AchievementsCard() {
                                 viewport={{ once: true }}
                             >
                                 View Glimpse
-                            </motion.button>
+                            </motion.button> */}
                         </div>
                     </motion.div>
                 </div>

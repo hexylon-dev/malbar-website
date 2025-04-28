@@ -148,21 +148,21 @@ const Hero = () => {
                     </svg>
                 </button>
 
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 md:gap-2">
+                {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 md:gap-2">
                     {images.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => goToSlide(index)}
                             className={`w-2 h-2 md:w-3 md:h-3 rounded-full border-none cursor-pointer transition-colors duration-300 ${index === currentIndex
-                                    ? "bg-[#ff6e00]"
-                                    : "bg-white bg-opacity-60 hover:bg-opacity-100"
+                                ? "bg-[#ff6e00]"
+                                : "bg-white bg-opacity-60 hover:bg-opacity-100"
                                 }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
                     ))}
-                </div>
+                </div> */}
             </div>
-        </div>
+        </div >
     );
 };
 

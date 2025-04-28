@@ -304,7 +304,7 @@ const MalbarprimeResidnatil = () => {
                     viewport={{ margin: "-100px" }}
                     variants={fadeIn}
                 >
-                    <Projectcard />
+                    {/* <Projectcard /> */}
                 </motion.div>
 
                 {/* Contact form */}
