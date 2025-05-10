@@ -44,13 +44,13 @@ export default function Footer() {
                             <h3 className="text-orange-500 font-medium mb-4">Projects</h3>
                             <ul className="space-y-2">
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/projects/residential">Residential</Link>
+                                    <a href="/malbar-prime-residential">Residential</a>
                                 </li>
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/projects/commercial">Commercial</Link>
+                                    <a href="/Malbar-Prime">Commercial</a>
                                 </li>
                                 <li className="text-sm text-gray-600">
-                                    <Link href="/projects/on-going">On Going</Link>
+                                    {/* <a href="/projects/on-going">On Going</a> */}
                                 </li>
                             </ul>
                         </div>

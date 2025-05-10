@@ -19,6 +19,7 @@ import Malbarprime from './components/malbar-prime/Malbar-prime.jsx';
 import PetrolPumpUI from "./components/Service/petrolpump/Petrolpump.jsx"
 import BricksShowcase from './components/Service/Bricks/Bricks.jsx';
 import MalbarprimeResidnatil from './components/malbar-prime/malbar-prme-residatial.jsx';
+import ImageBanner from "./components/Home/Banner.jsx"
 
 // import Contact from './components/contact/Contact';
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/petrolpump" element={<PetrolPumpUI />} />
           <Route path="/BricksShowcase" element={<BricksShowcase />} />
           <Route path="/malbar-prime-residential" element={<MalbarprimeResidnatil />} />
+          <Route path="/upcoming" element={<ImageBanner />} />
         </Routes>
         <Footer />
       </div>

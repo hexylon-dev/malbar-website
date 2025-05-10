@@ -6,12 +6,19 @@ import img3 from "../../asset/Hills-coursel (1) (1).webp";
 import img4 from "../../asset/surya-coursel.webp";
 import img5 from "../../asset/prime-coursel.webp";
 import img6 from "../../asset/gold.webp";
+import img7 from "../../asset/Frame 1000001776 (1).webp"
 
 const Hero = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
     const images = [
+        {
+            src: img7,
+            alt: "Coming Soon",
+            title: "Coming Soon",
+            link: "/upcoming"
+        },
         {
             src: img5,
             alt: "Malbar Prime Building",
@@ -49,6 +56,7 @@ const Hero = () => {
             title: "SURYA KIRAN BUNGLOWS",
             link: "/Surya-kiran-bungalows"
         },
+
     ];
 
     const goToNext = () => {
@@ -94,7 +102,7 @@ const Hero = () => {
                             className="object-cover w-full h-full"
                         />
 
-                        <div className="absolute bottom-0 right-0 p-4 md:p-6 lg:p-8 text-left bg-white bg-opacity-110 w-full md:w-3/4 lg:w-[800px] rounded-tl-2xl h-auto md:h-[10rem] lg:h-[12rem]">
+                        <div className="absolute bottom-0 right-0 p-4 md:p-6 lg:p-8 text-left bg-white bg-opacity-110 w-full md:w-3/4 lg:w-[800px] rounded-tl-2xl h-auto md:h-[10rem] lg:h-[16rem]">
                             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-black mb-2 md:mb-4 mt-1 md:mt-3">
                                 {image.title}
                             </h2>
@@ -147,20 +155,6 @@ const Hero = () => {
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
-
-                {/* <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1 md:gap-2">
-                    {images.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => goToSlide(index)}
-                            className={`w-2 h-2 md:w-3 md:h-3 rounded-full border-none cursor-pointer transition-colors duration-300 ${index === currentIndex
-                                ? "bg-[#ff6e00]"
-                                : "bg-white bg-opacity-60 hover:bg-opacity-100"
-                                }`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div> */}
             </div>
         </div >
     );

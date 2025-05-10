@@ -15,7 +15,7 @@ function PortfolioPage() {
     // Data for the sections
     const sections = [
         {
-            title: "Bricks Furnace: From Bricks to Buildings",
+            title: "BRICKS FURNACE: FROM BRICKS TO BUILDINGS",
             descriprtion: "From Foundation to Future: Our Journey",
             content: [
                 "The story begins in 1965 when Rameshbhai started a brick furnace in Nikol. His dedication, values, and steady focus laid the foundation of a business built on trust. Every brick reflected a commitment to quality.  Years later, his son Nrupansh carried the legacy forward with a broader vision  stepping into real estate to meet the city’s growing housing needs.What began as brick- making evolved into thoughtful real estate development rooted in the same values."
@@ -23,14 +23,14 @@ function PortfolioPage() {
             image: img3,
         },
         {
-            title: "SURYAKIRAN : The Beginning of a New Chapter",
+            title: "SURYAKIRAN: THE BEGINNING OF A NEW CHAPTER",
             content: [
                 "SURYAKIRAN was our first villa project and marked the beginning of our journey into real estate development.Thoughtfully designed and built with quality at its core, Suryakiran set a new standard for modern living in Nikol.It reflected our vision to create homes that offer both comfort and class laying the foundation for all our future projects"
             ],
             image: img4,
         },
         {
-            title: "MALBAR HILL : A Refreshing Escape within the City",
+            title: "MALBAR HILL: A REFRESHING ESCAPE WITHIN THE CITY",
             content: [
                 "   Following the success of Suryakiran, we launched Malbar Hill a premium residential project designed to bring elevated living to the heart of Nikol. With Malbar Hill, we introduced the Malbar brand, which quickly gained recognition for delivering homes that balance elegance and affordability."
 
@@ -38,28 +38,28 @@ function PortfolioPage() {
             image: img5
         },
         {
-            title: "MALBAR ROYAL : Where Comfort Meets Class",
+            title: "MALBAR ROYAL: WHERE COMFORT MEETS CLASS",
             content: [
                 "Malbar Royal, our third project in Nikol, was crafted to offer a royal touch to everyday living.With its modern design, spacious layouts, and premium features, it stood out as a perfect blend of comfort, elegance, and affordability.This project further strengthened the Malbar brand and our commitment to raising the standard of living in the area."
             ],
             image: img6
         },
         {
-            title: "MALBAR GOLD : Designed for Peaceful Living ",
+            title: "MALBAR GOLD: DESIGNED FOR PEACEFUL LIVING",
             content: [
                 "  As our fourth project in Nikol, Malbar Gold continued our vision of creating well-designed, quality homes. Focused on modern lifestyles, it offered smart layouts, essential amenities, and a peaceful living environment. Malbar Gold added another milestone to the Malbar series, reinforcing our promise of delivering value-driven homes with a premium feel."
             ],
             image: img1
         },
         {
-            title: "MALBAR PRIME : A Thoughtful Blend of Living and Working",
+            title: "MALBAR PRIME: A THOUGHTFUL BLEND OF LIVING AND WORKING",
             content: [
                 "Malbar Prime is our ongoing project in Nikol, and a proud continuation of the Malbar legacy. Designed with a focus on modern architecture, smart planning, and lifestyle comfort, Malbar Prime brings together everything we've learned from our past developments. It's more than just a project it's a step forward in our journey to shape quality living spaces for todays and tomorrow's families."
             ],
             image: img7
         },
         {
-            title: "A Trusted Stop in Nikol Since 2020",
+            title: "A TRUSTED STOP IN NIKOL SINCE 2020",
             content: [
                 "  Launched in 2020, our HPCL petrol pump in Nikol, Ahmedabad, marks a milestone in our journey towards better service and accessibility. Strategically located to serve daily commuters and locals alike, the pump has witnessed an impressive 50,000+ footfall since inception, a testament to the trust and satisfaction of our customers.   Every refill here isn’t just fuel, it’s a promise to keep moving forward, together."]
             ,

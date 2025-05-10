@@ -114,17 +114,15 @@ const Header = () => {
                 // { title: "Houses", path: "/projects/residential/houses" },
             ],
         },
-        // {
-        //     title: "Malbar-Prime",
-        //     path: "/Malbar-Prime",
-        //     subItems: [
-        //         { title: "Malbar prime", path: "/Malbar-Prime" },
-        //         // { title: "Retail Spaces", path: "/projects/commercial/retail-spaces" },
-        //     ],
-        // },
         {
             title: "On Going",
             path: "/Malbar-Prime",
+            disableDropdown: true,
+            subItems: []
+        },
+        {
+            title: "Upcoming",
+            path: "/upcoming",
             disableDropdown: true,
             subItems: []
         },

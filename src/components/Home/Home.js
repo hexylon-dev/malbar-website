@@ -4,6 +4,8 @@ import About from './About';
 import Gallery from './Gallery';
 import Contact from './Contact';
 import ProjectCard from './ProjectCard';
+import ImageBanner from "./Banner"
+
 
 const Home = () => {
     return (
@@ -11,6 +13,10 @@ const Home = () => {
             {/* Hero Section */}
             <section className="w-full">
                 <Hero />
+            </section>
+
+            <section className="w-full">
+                <ImageBanner />
             </section>
 
             {/* About Section */}
@@ -23,10 +29,10 @@ const Home = () => {
                 <Gallery />
             </section>
 
+            {/* Project Card Section */}
             <section className="w-full">
                 <ProjectCard />
             </section>
-
 
             {/* Contact Section */}
             <section className="w-full py-16 bg-gray-50">
@@ -36,4 +42,4 @@ const Home = () => {
     );
 };
 
-export default Home; 
+export default Home;
